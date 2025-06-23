@@ -11,29 +11,30 @@
             padding: 0;
             display: flex;
             min-height: 100vh;
-            font-size: 15px; /* 基础字体放大 */
+            font-size: 15px;
+            color: #FFD700; /* 所有文字设为黄色 */
         }
         #sidebar {
-            width: 220px; /* 加宽侧边栏 */
+            width: 220px;
             background-color: #8B4513;
-            color: yellow;
             padding: 25px 0;
         }
         #sidebar h1 {
             text-align: center;
             margin-bottom: 35px;
-            font-size: 1.8em; /* 分类标题放大 */
+            font-size: 1.8em;
             padding: 0 15px;
+            color: BLUE; 
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 15px 25px; /* 加大按钮内边距 */
+            padding: 15px 25px;
             background: none;
             border: none;
-            color: yellow;
+            color: BLUE; 
             text-align: left;
-            font-size: 1.3em; /* 按钮文字放大 */
+            font-size: 1.3em;
             cursor: pointer;
             transition: background 0.3s;
         }
@@ -46,25 +47,25 @@
         }
         #content {
             flex: 1;
-            padding: 30px; /* 加大内容区内边距 */
-            background-color: #f5f5f5;
+            padding: 30px;
+            background-color: #333; /* 深色背景使黄色更醒目 */
         }
         .menu-section {
             display: none;
-            background-color: white;
+            background-color: white; /* 内容区深灰色背景 */
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
         }
         .menu-section.active {
             display: block;
         }
         .menu-section h2 {
-            color: #8B4513;
-            border-bottom: 2px solid #ddd;
+            color: #FFD700; /* 内容标题黄色 */
+            border-bottom: 2px solid #666;
             padding-bottom: 15px;
             margin-top: 0;
-            font-size: 1em; /* 内容区标题放大 */
+            font-size: 1.6em;
         }
         ul {
             list-style-type: none;
@@ -72,14 +73,14 @@
             margin: 0;
         }
         li {
-            padding: 6px 0; /* 加大行距 */
-            border-bottom: 1px solid #eee;
-            font-size: 1.2em; /* 菜单项文字放大 */
+            padding: 12px 0;
+            border-bottom: 1px solid #555;
+            font-size: 1.2em;
         }
         .options {
             margin-top: 8px;
-            font-size: 1em; /* 选项文字适当放大 */
-            color: #666;
+            font-size: 1em;
+            color: #FFD700; /* 选项文字黄色 */
             padding-left: 15px;
         }
 
@@ -101,7 +102,6 @@
     </style>
 </head>
 <body>
-    <!-- 页面结构与之前相同 -->
     <div id="sidebar">
         <h1>菜单分类</h1>
         <button class="category-btn active" onclick="showCategory('drinks')">酒水类</button>
