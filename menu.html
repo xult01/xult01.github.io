@@ -12,19 +12,27 @@
             display: flex;
             min-height: 100vh;
             font-size: 15px;
-            color: #FFD700; /* 所有文字设为黄色 */
+            color: #FFD700;
+            overflow: hidden; /* 防止整体滚动 */
         }
         #sidebar {
             width: 220px;
             background-color: #8B4513;
             padding: 25px 0;
+            position: fixed; /* 固定定位 */
+            height: 100vh; /* 全屏高度 */
+            overflow-y: auto; /* 允许侧边栏单独滚动 */
         }
         #sidebar h1 {
             text-align: center;
             margin-bottom: 35px;
             font-size: 1.8em;
             padding: 0 15px;
-            color: BLUE; 
+            color: blue;
+            position: sticky; /* 标题固定 */
+            top: 0;
+            background-color: #8B4513;
+            z-index: 1;
         }
         .category-btn {
             display: block;
@@ -32,7 +40,7 @@
             padding: 15px 25px;
             background: none;
             border: none;
-            color: BLUE; 
+            color: blue;
             text-align: left;
             font-size: 1.3em;
             cursor: pointer;
@@ -48,11 +56,14 @@
         #content {
             flex: 1;
             padding: 30px;
-            background-color: #555; /* 深色背景使黄色更醒目 */
+            background-color: #555;
+            margin-left: 220px; /* 为固定侧边栏留出空间 */
+            height: 100vh;
+            overflow-y: auto; /* 允许内容区域滚动 */
         }
         .menu-section {
             display: none;
-            background-color: #555; /* 内容区深灰色背景 */
+            background-color: #555;
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.3);
@@ -61,7 +72,7 @@
             display: block;
         }
         .menu-section h2 {
-            color: #FFD700; /* 内容标题黄色 */
+            color: #FFD700;
             border-bottom: 2px solid #666;
             padding-bottom: 15px;
             margin-top: 0;
@@ -80,7 +91,7 @@
         .options {
             margin-top: 8px;
             font-size: 1em;
-            color: #FFD700; /* 选项文字黄色 */
+            color: #FFD700;
             padding-left: 15px;
         }
 
@@ -89,14 +100,20 @@
             body {
                 flex-direction: column;
                 font-size: 16px;
+                overflow: auto;
             }
             #sidebar {
                 width: 100%;
+                height: auto;
+                position: relative;
                 padding: 15px 0;
             }
-            .category-btn {
-                padding: 12px 20px;
-                font-size: 1.1em;
+            #content {
+                margin-left: 0;
+                height: auto;
+            }
+            #sidebar h1 {
+                position: relative;
             }
         }
     </style>
