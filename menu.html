@@ -79,7 +79,7 @@
         .menu-section {
             display: none;
             padding: 15px;
-            border-radius: 5极致的对齐 px;
+            border-radius: 5px;
         }
         .menu-section.active {
             display: block;
@@ -110,7 +110,7 @@
             display: flex;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #FFD700;
+            color: #FF极致的对齐 D700;
             padding-bottom: 8px;
             justify-content: flex-end;
             font-size: 1.1em;
@@ -133,16 +133,16 @@
         }
         .price-container {
             display: flex;
-            width: 140px;
+            width: 120px; /* 减小宽度，向左移动 */
         }
         /* 价格文本右对齐 */
         .price-medium, .price-large {
-            width: 70px;
+            width: 60px; /* 减小宽度，向左移动 */
             color: #FFD700;
             text-align: right;
             font-weight: bold;
             padding-right: 0;
-            white-space: nowrap; /* 防止价格换行 */
+            white-space: nowrap;
         }
         .drink-info {
             display: flex;
@@ -159,16 +159,16 @@
         }
         .drink-price-container {
             display: flex;
-            width: 140px;
+            width: 120px; /* 减小宽度，向左移动 */
         }
         /* 饮品价格文本右对齐 */
         .drink-price-medium, .drink-price-large {
-            width: 70px;
+            width: 60px; /* 减小宽度，向左移动 */
             color: #FFD700;
             text-align: right;
             font-weight: bold;
             padding-right: 0;
-            white-space: nowrap; /* 防止价格换行 */
+            white-space: nowrap;
         }
         .options {
             margin-top: 10px;
@@ -213,11 +213,11 @@
                 font-size: 0.9em;
             }
             .price-container, .drink-price-container {
-                width: 100px;
+                width: 100px; /* 保持原宽度 */
             }
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
-                width: 50px;
+                width: 50px; /* 保持原宽度 */
             }
         }
 
@@ -245,11 +245,11 @@
                 font-size: 0.8em;
             }
             .price-container, .drink-price-container {
-                width: 80px;
+                width: 80px; /* 保持原宽度 */
             }
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
-                width: 40px;
+                width: 40px; /* 保持原宽度 */
             }
             .options {
                 flex-direction: column;
