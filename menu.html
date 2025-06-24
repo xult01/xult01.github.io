@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
-        /* 基础样式 - 精确匹配图片 */
+        /* 基础样式 */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            font-family: Arial, sans极致的对齐 -serif;
+            font-family: Arial, sans-serif;
             display: flex;
             min-height: 100vh;
             font-size: 14px;
-            color: #FFD700; /* 黄色字体 */
+            color: #FFD700;
             line-height: 1.2;
-            background-color: #555; /* 深灰色背景 */
+            background-color: #555;
         }
         #sidebar {
-            /* 左侧边栏 */
             width: 100px;
-            background-color: #8B4513; /* 橙色背景 */
+            background-color: #8B4513;
             position: sticky;
             top: 0;
             height: 100vh;
@@ -33,24 +32,24 @@
         }
         #sidebar h1 {
             text-align: center;
-            padding: 12px 2px; /* 增大内边距 */
-            font-size: 1.5em; /* 增大字体大小 (原1.2em) */
-            color: blue; /* 蓝色字体 */
-            background-color: #A0522D; /* 深橙色 */
-            margin-bottom: 8px; /* 增加下边距 */
+            padding: 12px 2px;
+            font-size: 1.5em;
+            color: blue;
+            background-color: #A0522D;
+            margin-bottom: 8px;
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 10px 2px; /* 增大内边距 */
+            padding: 10极致的对齐 px 2px;
             background: none;
             border: none;
             color: blue;
             text-align: center;
-            font-size: 1.1em; /* 增大字体大小 (原1.0em) */
+            font-size: 1.1em;
             cursor: pointer;
             transition: all 0.2s;
-            margin-bottom: 8px; /* 增大下边距 */
+            margin-bottom: 8px;
             position: relative;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -59,9 +58,8 @@
         .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
             font-weight: bold;
-            font-size: 1.25em; /* 选中状态增大字体 (原1.15em) */
+            font-size: 1.25em;
         }
-        /* 为活动按钮添加指示器 */
         .category-btn.active::after {
             content: "";
             position: absolute;
@@ -69,14 +67,14 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background-color: #FFD700; /* 黄色高亮 */
+            background-color: #FFD700;
         }
         #content {
             flex: 1;
             padding: 10px 15px;
             height: 100vh;
             overflow-y: auto;
-            background-color: #444; /* 内容区深灰色 */
+            background-color: #444;
         }
         .menu-section {
             display: none;
@@ -107,38 +105,43 @@
             padding: 8px 0;
             border-bottom: 1px solid #555;
         }
+        /* 价格标签增大字体 */
         .menu-header {
             display: flex;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #FFD700; /* 改为黄色 */
+            color: #FFD700;
             padding-bottom: 8px;
-            justify-content: flex-end; /* 标题右对齐 */
+            justify-content: flex-end;
+            font-size: 1.1em;
         }
+        /* 价格完全右对齐 */
         .menu-header > div {
-            width: 70px; /* 固定宽度确保对齐 */
-            text-align: right; /* 文本右对齐 */
-            padding-right: 5px; /* 右内边距 */
+            width: 70px;
+            text-align: right;
+            padding-right: 0;
         }
         .menu-item {
             display: flex;
             align-items: center;
         }
         .item-name {
-            flex: 1; /* 占据剩余空间 */
+            flex: 1;
             color: #FFD700;
             font-weight: bold;
             padding: 5px 0;
         }
         .price-container {
             display: flex;
-            width: 140px; /* 固定总宽度 */
+            width: 140px;
         }
+        /* 价格文本右对齐 */
         .price-medium, .price-large {
-            width: 70px; /* 固定列宽 */
-            color: #FFD700; /* 改为黄色 */
-            text-align: right; /* 价格右对齐 */
+            width: 70px;
+            color: #FFD700;
+            text-align: right;
             font-weight: bold;
+            padding-right: 0;
         }
         .drink-info {
             display: flex;
@@ -155,13 +158,15 @@
         }
         .drink-price-container {
             display: flex;
-            width: 140px; /* 固定总宽度 */
+            width: 140px;
         }
+        /* 饮品价格文本右对齐 */
         .drink-price-medium, .drink-price-large {
-            width: 70px; /* 固定列宽 */
-            color: #FFD700; /* 改为黄色 */
-            text-align: right; /* 价格右对齐 */
+            width: 70px;
+            color: #FFD700;
+            text-align: right;
             font-weight: bold;
+            padding-right: 0;
         }
         .options {
             margin-top: 10px;
@@ -185,18 +190,18 @@
                 min-width: 320px;
             }
             #sidebar {
-                width: 90px; /* 稍微加宽 */
+                width: 90px;
             }
             #sidebar h1 {
                 padding: 10px 2px;
-                font-size: 1.4em; /* 更大字体 */
+                font-size: 1.4em;
             }
             .category-btn {
                 padding: 8px 2px;
-                font-size: 1.0em; /* 默认大小 */
+                font-size: 1.0em;
             }
             .category-btn.active {
-                font-size: 1.15em; /* 选中状态增大 */
+                font-size: 1.15em;
             }
             #content {
                 padding: 8px;
@@ -221,14 +226,14 @@
             }
             #sidebar h1 {
                 padding: 8px 1px;
-                font-size: 1.2em; /* 更大字体 */
+                font-size: 1.2em;
             }
             .category-btn {
                 padding: 7px 1px;
-                font-size: 0.9em; /* 默认大小 */
+                font-size: 0.9em;
             }
             .category-btn.active {
-                font-size: 1.05em; /* 选中状态增大 */
+                font-size: 1.05em;
             }
             #content {
                 padding: 5px;
@@ -238,7 +243,7 @@
                 font-size: 0.8em;
             }
             .price-container, .drink-price-container {
-                width极致的对齐 : 80px;
+                width: 80px;
             }
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
