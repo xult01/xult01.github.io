@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
-        /* 基础样式 - 根据图片调整 */
+        /* 基础样式 - 精确匹配图片 */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,19 +16,18 @@
             display: flex;
             min-height: 100vh;
             font-size: 14px;
-            color: #FFD700;
+            color: #FFD700; /* 黄色字体 */
             line-height: 1.2;
-            background-color: #555;
+            background-color: #555; /* 深灰色背景 */
         }
         #sidebar {
             /* 左侧边栏 */
             width: 100px;
-            background-color: #8B4513;
+            background-color: #8B4513; /* 橙色背景 */
             position: sticky;
             top: 0;
             height: 100vh;
             overflow-y: auto;
-            text-align: left;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
         }
@@ -36,8 +35,8 @@
             text-align: center;
             padding: 10px 2px;
             font-size: 1.2em;
-            color: blue;
-            background-color: #A0522D;
+            color: blue; /* 蓝色字体 */
+            background-color: #A0522D; /* 深橙色 */
         }
         .category-btn {
             display: block;
@@ -68,18 +67,17 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background-color: #FFD700;
+            background-color: #FFD700; /* 黄色高亮 */
         }
         #content {
             flex: 1;
             padding: 10px 15px;
             height: 100vh;
             overflow-y: auto;
-            background-color: #444;
+            background-color: #444; /* 内容区深灰色 */
         }
         .menu-section {
             display: none;
-            background-color: #444;
             padding: 15px;
             border-radius: 5px;
         }
@@ -104,79 +102,63 @@
             margin: 0;
         }
         li {
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #555;
-            font-size: 1em;
         }
         .menu-header {
             display: flex;
-            justify-content: space-between;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #FFA500;
-            border-bottom: 1px solid #666;
+            color: #FFA500; /* 橙色标题 */
             padding-bottom: 8px;
+            justify-content: flex-end; /* 标题右对齐 */
         }
         .menu-header > div {
-            flex: 1;
-            text-align: center;
-        }
-        .menu-header > div:first-child {
-            text-align: left;
-            flex: 2;
+            width: 70px; /* 固定宽度确保对齐 */
+            text-align: right; /* 文本右对齐 */
+            padding-right: 5px; /* 右内边距 */
         }
         .menu-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
         .item-name {
-            flex: 2;
+            flex: 1; /* 占据剩余空间 */
             color: #FFD700;
             font-weight: bold;
             padding: 5px 0;
         }
         .price-container {
-            flex: 1;
             display: flex;
-            justify-content: space-between;
+            width: 140px; /* 固定总宽度 */
         }
-        .price-medium {
-            flex: 1;
+        .price-medium, .price-large {
+            width: 70px; /* 固定列宽 */
             color: #FFA500;
-            text-align: center;
-            font-weight: bold;
-        }
-        .price-large {
-            flex: 1;
-            color: #FFA500;
-            text-align: center;
+            text-align: right; /* 价格右对齐 */
             font-weight: bold;
         }
         .drink-info {
             display: flex;
             flex-direction: column;
-            gap: 5px;
         }
         .drink-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
         .drink-name {
             font-weight: bold;
             color: #FFD700;
-            flex: 2;
+            flex: 1;
         }
         .drink-price-container {
             display: flex;
-            justify-content: space-between;
-            flex: 1;
+            width: 140px; /* 固定总宽度 */
         }
         .drink-price-medium, .drink-price-large {
+            width: 70px; /* 固定列宽 */
             color: #FFA500;
-            flex: 1;
-            text-align: center;
+            text-align: right; /* 价格右对齐 */
             font-weight: bold;
         }
         .options {
@@ -214,27 +196,16 @@
             #content {
                 padding: 8px;
             }
-            .menu-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-bottom: 5px;
-            }
             .menu-header > div {
-                text-align: left;
-                flex: none;
-                width: 100%;
-                margin-bottom: 3px;
-            }
-            .menu-item, .drink-row {
-                flex-wrap: wrap;
-            }
-            .item-name, .drink-name {
-                flex-basis: 100%;
-                margin-bottom: 5px;
+                width: 50px;
+                font-size: 0.9em;
             }
             .price-container, .drink-price-container {
-                flex-basis: 100%;
-                justify-content: space-around;
+                width: 100px;
+            }
+            .price-medium, .price-large,
+            .drink-price-medium, .drink-price-large {
+                width: 50px;
             }
         }
 
@@ -253,6 +224,17 @@
             }
             #content {
                 padding: 5px;
+            }
+            .menu-header > div {
+                width: 40px;
+                font-size: 0.8em;
+            }
+            .price-container, .drink-price-container {
+                width: 80px;
+            }
+            .price-medium, .price-large,
+            .drink-price-medium, .drink-price-large {
+                width: 40px;
             }
             .options {
                 flex-direction: column;
@@ -278,7 +260,6 @@
         <div id="drinks" class="menu-section active">
             <h2>酒水类</h2>
             <div class="menu-header">
-                <div></div>
                 <div class="price-medium">中杯</div>
                 <div class="price-large">大杯</div>
             </div>
@@ -346,7 +327,6 @@
         <div id="snacks" class="menu-section">
             <h2>小吃类</h2>
             <div class="menu-header">
-                <div></div>
                 <div class="price-medium">小份</div>
                 <div class="price-large">大份</div>
             </div>
