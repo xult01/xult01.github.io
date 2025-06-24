@@ -29,18 +29,19 @@
             top: 0;
             height: 100vh;
             overflow-y: auto;
+            text-align: left;
         }
         #sidebar h1 {
             text-align: center;
             margin: 10px 0 15px;
             font-size: 1.4em;
-            padding: 0 8px;
+            padding: 0 5px; /* 减少左右内边距 */
             color: blue;
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 8px 12px;
+            padding: 8px 8px 8px 10px; /* 缩小所有内边距 */
             background: none;
             border: none;
             color: blue;
@@ -120,11 +121,14 @@
             }
             #sidebar {
                 width: 30%;
-                padding: 8px 0;
+                padding: 5px 0; /* 缩小移动端侧边栏内边距 */
             }
             #content {
                 width: 70%;
                 padding: 10px;
+            }
+            .category-btn {
+                padding: 6px 5px 6px 8px; /* 缩小移动端按钮内边距 */
             }
             .item-name {
                 min-width: 80px;
@@ -140,9 +144,20 @@
         @media (max-width: 480px) {
             #sidebar {
                 width: 35%;
+                padding: 3px 0; /* 进一步缩小内边距 */
+            }
+            #sidebar h1 {
+                padding: 0 3px; /* 缩小标题内边距 */
+                margin: 8px 0 10px; /* 缩小标题外边距 */
+                font-size: 1.2em; /* 稍微缩小字体 */
             }
             #content {
                 width: 65%;
+                padding: 8px;
+            }
+            .category-btn {
+                padding: 5px 4px 5px 6px; /* 最小化按钮内边距 */
+                font-size: 0.9em;
             }
             .item-name {
                 min-width: 60px;
@@ -173,27 +188,27 @@
         
     </li><li>
         <span class="item-name">J2_啤酒</span>
-        <span class="item-price">瓶装￥15/扎啤￥25</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li><li>
         <span class="item-name">J3_劲酒</span>
-        <span class="item-price">小杯￥20/大杯￥30</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li><li>
         <span class="item-name">J5_红酒</span>
-        <span class="item-price">杯￥35/瓶￥120</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li><li>
         <span class="item-name">J6_葡萄酒</span>
-        <span class="item-price">杯￥28/瓶￥98</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li><li>
         <span class="item-name">J7_日落</span>
-        <span class="item-price">杯￥25</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li><li>
         <span class="item-name">J8_人生</span>
-        <span class="item-price">杯￥30</span>
+        <span class="item-price">中杯￥12/大杯￥18</span>
         
     </li>
             </ul>
@@ -212,27 +227,27 @@
         
     </li><li>
         <span class="item-name">C3_豌豆</span>
-        <span class="item-price">份￥10</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li><li>
         <span class="item-name">C5_海草</span>
-        <span class="item-price">份￥12</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li><li>
         <span class="item-name">C6_酸豆芽</span>
-        <span class="item-price">份￥8</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li><li>
         <span class="item-name">C7_臭豆腐</span>
-        <span class="item-price">份￥15</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li><li>
         <span class="item-name">C8_火山烤肠</span>
-        <span class="item-price">根￥10</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li><li>
         <span class="item-name">C9_人肉叉烧包</span>
-        <span class="item-price">笼￥22</span>
+        <span class="item-price">小份￥15/大份￥25</span>
         
     </li>
             </ul>
