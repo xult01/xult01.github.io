@@ -5,70 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
+        /* 基础样式 */
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: row;
             min-height: 100vh;
-            font-size: 14px; /* 基础字体缩小 */
+            font-size: 14px;
             color: #FFD700;
-            overflow: hidden;
-            line-height: 1.1; /* 行高大幅缩小 */
+            line-height: 1.2;
+            background-color: #555;
         }
         #sidebar {
-            width: 180px; /* 侧边栏进一步缩小 */
+            width: 180px;
             background-color: #8B4513;
-            padding: 10px 0; /* 内边距减半 */
-            position: fixed;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
             height: 100vh;
             overflow-y: auto;
         }
         #sidebar h1 {
             text-align: center;
-            margin-bottom: 10px; /* 边距减半 */
-            font-size: 1.4em; /* 字体缩小 */
-            padding: 0 8px; /* 内边距减半 */
+            margin: 10px 0 15px;
+            font-size: 1.4em;
+            padding: 0 8px;
             color: blue;
-            position: sticky;
-            top: 0;
-            background-color: #8B4513;
-            z-index: 1;
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 6px 10px; /* 内边距减半 */
+            padding: 8px 12px;
             background: none;
             border: none;
             color: blue;
             text-align: left;
-            font-size: 1.1em; /* 字体缩小 */
+            font-size: 1.1em;
             cursor: pointer;
-            transition: background 0.3s;
-            margin-bottom: 3px; /* 间距减半 */
+            transition: all 0.2s;
+            margin-bottom: 2px;
         }
-        .category-btn:hover {
-            background-color: #A0522D;
-        }
-        .category-btn.active {
+        .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
             font-weight: bold;
         }
         #content {
             flex: 1;
-            padding: 12px; /* 内边距减半 */
-            background-color: #555;
-            margin-left: 180px; /* 与侧边栏匹配 */
+            padding: 15px;
             height: 100vh;
             overflow-y: auto;
         }
         .menu-section {
             display: none;
-            background-color: #555;
-            padding: 12px; /* 内边距减半 */
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            background-color: #444;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .menu-section.active {
             display: block;
@@ -76,62 +73,67 @@
         .menu-section h2 {
             color: #FFD700;
             border-bottom: 1px solid #666;
-            padding-bottom: 6px; /* 边距减半 */
-            margin-top: 0;
-            font-size: 1.2em; /* 字体缩小 */
-            margin-bottom: 8px; /* 边距减半 */
+            padding-bottom: 8px;
+            margin: 0 0 10px;
+            font-size: 1.3em;
         }
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
         }
         li {
-            padding: 4px 0; /* 内边距减半 */
+            padding: 6px 0;
             border-bottom: 1px solid #555;
-            font-size: 1em; /* 字体恢复标准 */
+            font-size: 1em;
         }
         .options {
-            margin-top: 3px; /* 边距减半 */
-            font-size: 0.8em; /* 字体缩小 */
+            margin-top: 4px;
+            font-size: 0.85em;
             color: #FFD700;
-            padding-left: 6px; /* 内边距减半 */
+            padding-left: 10px;
         }
 
-        /* 手机端适配 */
+        /* 移动端适配 - 保持左右布局 */
         @media (max-width: 768px) {
             body {
-                flex-direction: column;
-                font-size: 12px; /* 移动端字体更小 */
-                overflow: auto;
+                font-size: 12px;
+                min-width: 320px;
             }
             #sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 8px 0; /* 内边距减半 */
+                width: 35%;
+                padding: 8px 0;
             }
             #content {
-                margin-left: 0;
-                height: auto;
-                padding: 10px; /* 内边距减半 */
+                width: 65%;
+                padding: 10px;
             }
             #sidebar h1 {
-                font-size: 1.2em; /* 字体缩小 */
-                margin-bottom: 8px; /* 边距减半 */
+                font-size: 1.2em;
+                margin: 5px 0 10px;
             }
             .category-btn {
-                padding: 4px 8px; /* 内边距减半 */
+                padding: 6px 8px;
                 font-size: 1em;
             }
             .menu-section {
-                padding: 8px; /* 内边距减半 */
+                padding: 10px;
             }
             .menu-section h2 {
-                font-size: 1.1em; /* 字体缩小 */
+                font-size: 1.1em;
             }
             li {
-                padding: 3px 0; /* 内边距减半 */
+                padding: 4px 0;
+            }
+        }
+
+        /* 超小屏幕优化 */
+        @media (max-width: 480px) {
+            #sidebar {
+                width: 40%;
+            }
+            #content {
+                width: 60%;
             }
         }
     </style>
@@ -148,27 +150,14 @@
         <div id="drinks" class="menu-section active">
             <h2>酒水类</h2>
             <ul>
-                <li>J1_RIO</li>
-<li>J2_啤酒</li>
-<li>J3_劲酒</li>
-<li>J5_红酒</li>
-<li>J6_葡萄酒</li>
-<li>J7_日落</li>
-<li>J8_人生</li>
+                <li>J1_RIO</li><li>J2_啤酒</li><li>J3_劲酒</li><li>J5_红酒</li><li>J6_葡萄酒</li><li>J7_日落</li><li>J8_人生</li>
             </ul>
         </div>
 
         <div id="snacks" class="menu-section">
             <h2>小吃类</h2>
             <ul>
-                <li>C1_柠檬鸡爪</li>
-<li>C2_虎皮鸡爪</li>
-<li>C3_豌豆</li>
-<li>C5_海草</li>
-<li>C6_酸豆芽</li>
-<li>C7_臭豆腐</li>
-<li>C8_火山烤肠</li>
-<li>C9_人肉叉烧包</li>
+                <li>C1_柠檬鸡爪</li><li>C2_虎皮鸡爪</li><li>C3_豌豆</li><li>C5_海草</li><li>C6_酸豆芽</li><li>C7_臭豆腐</li><li>C8_火山烤肠</li><li>C9_人肉叉烧包</li>
             </ul>
         </div>
 
@@ -177,26 +166,19 @@
             <ul>
                 <li>A1_暴打柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A2_鸭屎香柠檬茶
+                </li><li>A2_鸭屎香柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A3_金桔柠檬茶
+                </li><li>A3_金桔柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A5_香橙柠檬茶
+                </li><li>A5_香橙柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A6_话梅柠檬茶
+                </li><li>A6_话梅柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A7_红宝石柠檬茶
+                </li><li>A7_红宝石柠檬茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A8_伯牙绝弦
+                </li><li>A8_伯牙绝弦
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
-                </li>
-<li>A9_红糖珍珠奶茶
+                </li><li>A9_红糖珍珠奶茶
                     <div class="options">冰量: 正常冰/少冰/常温 | 甜度: 正常糖/少糖/无糖</div>
                 </li>
             </ul>
@@ -205,19 +187,22 @@
 
     <script>
         function showCategory(categoryId) {
-            // 隐藏所有内容区域
+            // 切换内容显示
             document.querySelectorAll('.menu-section').forEach(section => {
                 section.classList.remove('active');
             });
-
-            // 显示选中的内容区域
             document.getElementById(categoryId).classList.add('active');
 
-            // 更新按钮激活状态
+            // 更新按钮状态
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.currentTarget.classList.add('active');
+
+            // 移动端滚动到顶部
+            if (window.innerWidth <= 768) {
+                document.getElementById('content').scrollTo(0, 0);
+            }
         }
     </script>
 </body>
