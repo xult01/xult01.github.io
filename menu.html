@@ -21,8 +21,8 @@
             background-color: #555;
         }
         #sidebar {
-            /* 缩小侧边栏宽度，减小边距 */
-            width: 150px;  /* 从180px缩小到150px */
+            /* 大幅缩小左侧边栏宽度 */
+            width: 100px;  /* 从150px缩小到100px */
             background-color: #8B4513;  /* 橙色背景 */
             position: sticky;
             top: 0;
@@ -30,28 +30,32 @@
             overflow-y: auto;
             text-align: left;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);  /* 右侧添加阴影 */
+            z-index: 10;
         }
         #sidebar h1 {
             /* 标题样式 */
             text-align: center;
-            padding: 15px 5px;
-            font-size: 1.4em;
+            padding: 10px 2px;
+            font-size: 1.2em;
             color: blue;
             background-color: #A0522D;  /* 深一点的橙色 */
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 12px 5px 12px 10px;  /* 减少左右内边距 */
+            padding: 8px 2px;
             background: none;
             border: none;
             color: blue;
-            text-align: left;
-            font-size: 1.1em;
+            text-align: center;
+            font-size: 0.95em;
             cursor: pointer;
             transition: all 0.2s;
             margin-bottom: 1px;
             position: relative;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
@@ -69,21 +73,25 @@
         }
         #content {
             flex: 1;
-            padding: 10px 15px;  /* 减少上下内边距 */
+            padding: 10px 15px;
             height: 100vh;
             overflow-y: auto;
         }
         .menu-section {
             display: none;
-            background-color: #444;  /* 灰色背景 */
+            background-color: #444;
             padding: 15px;
             border-radius: 5px;
         }
         .menu-section.active {
             display: block;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .menu-section h2 {
-            /* 黄色标题 */
             color: #FFD700;
             padding-bottom: 8px;
             margin: 0 0 10px;
@@ -96,7 +104,7 @@
             margin: 0;
         }
         li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #555;
             font-size: 1em;
         }
@@ -110,16 +118,14 @@
         }
         .drink-name {
             font-weight: bold;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #FFD700;  /* 黄色 */
+            color: #FFD700;
         }
         .drink-price {
             color: #FFA500;
             font-weight: bold;
             margin-top: 4px;
-            white-space: nowrap;
         }
         .options {
             margin-top: 8px;
@@ -133,7 +139,7 @@
             background-color: #333;
             padding: 3px 8px;
             border-radius: 3px;
-            color: #FFD700;  /* 黄色 */
+            color: #FFD700;
         }
 
         /* 其他饮品项样式 */
@@ -144,7 +150,7 @@
         }
         .item-name {
             flex: 1;
-            color: #FFD700;  /* 黄色 */
+            color: #FFD700;
         }
         .item-price {
             color: #FFA500;
@@ -159,21 +165,19 @@
                 min-width: 320px;
             }
             #sidebar {
-                /* 移动端进一步缩小边距 */
-                width: 120px;  /* 从150px缩小 */
-                padding: 0;
+                /* 移动端使用更窄的宽度 */
+                width: 80px;
             }
             #sidebar h1 {
-                padding: 10px 3px;
-                font-size: 1.2em;
-            }
-            #content {
-                width: calc(100% - 120px);
-                padding: 5px;
+                padding: 8px 2px;
+                font-size: 1.0em;
             }
             .category-btn {
-                padding: 10px 5px;
-                font-size: 1em;
+                padding: 8px 2px;
+                font-size: 0.9em;
+            }
+            #content {
+                padding: 8px;
             }
             .drink-name, .drink-price, .item-name, .item-price {
                 font-size: 0.9em;
@@ -189,19 +193,18 @@
         /* 超小屏幕优化 - 根据图片调整 */
         @media (max-width: 480px) {
             #sidebar {
-                width: 100px;  /* 最小宽度 */
+                width: 70px;
             }
             #sidebar h1 {
-                padding: 8px 2px;
-                font-size: 1.1em;
-            }
-            #content {
-                width: calc(100% - 100px);
-                padding: 5px;
+                padding: 6px 1px;
+                font-size: 0.9em;
             }
             .category-btn {
-                padding: 8px 3px;
-                font-size: 0.9em;
+                padding: 6px 1px;
+                font-size: 0.8em;
+            }
+            #content {
+                padding: 5px;
             }
             .drink-name, .drink-price, .item-name, .item-price {
                 font-size: 0.8em;
@@ -212,6 +215,8 @@
             .option-item {
                 width: 100%;
                 margin-bottom: 5px;
+                font-size: 0.8em;
+                padding: 2px 5px;
             }
         }
     </style>
