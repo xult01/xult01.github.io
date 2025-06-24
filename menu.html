@@ -28,7 +28,7 @@
             top: 0;
             height: 100vh;
             overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 2极致的对齐 px 0 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
         }
         #sidebar h1 {
@@ -46,7 +46,7 @@
             border: none;
             color: blue;
             text-align: center;
-            font-size: 0.95em;
+            font-size: 1.0em; /* 默认字体大小 */
             cursor: pointer;
             transition: all 0.2s;
             margin-bottom: 1px;
@@ -58,6 +58,8 @@
         .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
             font-weight: bold;
+            /* 增大选中分类的字体大小 */
+            font-size: 1.15em; /* 原为1.0em，现在增大15% */
         }
         /* 为活动按钮添加指示器 */
         .category-btn.active::after {
@@ -115,7 +117,7 @@
         }
         .menu-header > div {
             width: 70px; /* 固定宽度确保对齐 */
-            text-align: right; /* 文本极致的对齐 */
+            text-align: right; /* 文本右对齐 */
             padding-right: 5px; /* 右内边距 */
         }
         .menu-item {
@@ -191,7 +193,10 @@
             }
             .category-btn {
                 padding: 8px 2px;
-                font-size: 0.9em;
+                font-size: 0.9em; /* 默认大小 */
+            }
+            .category-btn.active {
+                font-size: 1.05em; /* 选中状态增大 */
             }
             #content {
                 padding: 8px;
@@ -220,7 +225,10 @@
             }
             .category-btn {
                 padding: 6px 1px;
-                font-size: 0.8em;
+                font-size: 0.8em; /* 默认大小 */
+            }
+            .category-btn.active {
+                font-size: 0.95em; /* 选中状态增大 */
             }
             #content {
                 padding: 5px;
@@ -243,7 +251,7 @@
                 width: 100%;
                 margin-bottom: 5px;
                 font-size: 0.8em;
-                padding: 2px 5极致的对齐 px;
+                padding: 2px 5px;
             }
         }
     </style>
