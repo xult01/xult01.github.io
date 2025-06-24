@@ -12,7 +12,7 @@
             padding: 0;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans极致的对齐 -serif;
             display: flex;
             min-height: 100vh;
             font-size: 14px;
@@ -28,28 +28,29 @@
             top: 0;
             height: 100vh;
             overflow-y: auto;
-            box-shadow: 2极致的对齐 px 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
         }
         #sidebar h1 {
             text-align: center;
-            padding: 10px 2px;
-            font-size: 1.2em;
+            padding: 12px 2px; /* 增大内边距 */
+            font-size: 1.5em; /* 增大字体大小 (原1.2em) */
             color: blue; /* 蓝色字体 */
             background-color: #A0522D; /* 深橙色 */
+            margin-bottom: 8px; /* 增加下边距 */
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 8px 2px;
+            padding: 10px 2px; /* 增大内边距 */
             background: none;
             border: none;
             color: blue;
             text-align: center;
-            font-size: 1.0em; /* 默认字体大小 */
+            font-size: 1.1em; /* 增大字体大小 (原1.0em) */
             cursor: pointer;
             transition: all 0.2s;
-            margin-bottom: 1px;
+            margin-bottom: 8px; /* 增大下边距 */
             position: relative;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -58,8 +59,7 @@
         .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
             font-weight: bold;
-            /* 增大选中分类的字体大小 */
-            font-size: 1.15em; /* 原为1.0em，现在增大15% */
+            font-size: 1.25em; /* 选中状态增大字体 (原1.15em) */
         }
         /* 为活动按钮添加指示器 */
         .category-btn.active::after {
@@ -185,18 +185,18 @@
                 min-width: 320px;
             }
             #sidebar {
-                width: 80px;
+                width: 90px; /* 稍微加宽 */
             }
             #sidebar h1 {
-                padding: 8px 2px;
-                font-size: 1.0em;
+                padding: 10px 2px;
+                font-size: 1.4em; /* 更大字体 */
             }
             .category-btn {
                 padding: 8px 2px;
-                font-size: 0.9em; /* 默认大小 */
+                font-size: 1.0em; /* 默认大小 */
             }
             .category-btn.active {
-                font-size: 1.05em; /* 选中状态增大 */
+                font-size: 1.15em; /* 选中状态增大 */
             }
             #content {
                 padding: 8px;
@@ -217,18 +217,18 @@
         /* 超小屏幕优化 */
         @media (max-width: 480px) {
             #sidebar {
-                width: 70px;
+                width: 80px;
             }
             #sidebar h1 {
-                padding: 6px 1px;
-                font-size: 0.9em;
+                padding: 8px 1px;
+                font-size: 1.2em; /* 更大字体 */
             }
             .category-btn {
-                padding: 6px 1px;
-                font-size: 0.8em; /* 默认大小 */
+                padding: 7px 1px;
+                font-size: 0.9em; /* 默认大小 */
             }
             .category-btn.active {
-                font-size: 0.95em; /* 选中状态增大 */
+                font-size: 1.05em; /* 选中状态增大 */
             }
             #content {
                 padding: 5px;
@@ -238,7 +238,7 @@
                 font-size: 0.8em;
             }
             .price-container, .drink-price-container {
-                width: 80px;
+                width极致的对齐 : 80px;
             }
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
