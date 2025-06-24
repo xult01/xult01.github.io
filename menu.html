@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
-        /* 基础样式 */
+        /* 基础样式 - 根据图片调整 */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
-            flex-direction: row;
             min-height: 100vh;
             font-size: 14px;
             color: #FFD700;
@@ -22,26 +21,28 @@
             background-color: #555;
         }
         #sidebar {
-            width: 180px;
-            background-color: #8B4513;
-            padding: 10px 0;
+            /* 缩小侧边栏宽度，减小边距 */
+            width: 150px;  /* 从180px缩小到150px */
+            background-color: #8B4513;  /* 橙色背景 */
             position: sticky;
             top: 0;
             height: 100vh;
             overflow-y: auto;
             text-align: left;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);  /* 右侧添加阴影 */
         }
         #sidebar h1 {
+            /* 标题样式 */
             text-align: center;
-            margin: 10px 0 15px;
+            padding: 15px 5px;
             font-size: 1.4em;
-            padding: 0 5px;
             color: blue;
+            background-color: #A0522D;  /* 深一点的橙色 */
         }
         .category-btn {
             display: block;
             width: 100%;
-            padding: 8px 8px 8px 10px;
+            padding: 12px 5px 12px 10px;  /* 减少左右内边距 */
             background: none;
             border: none;
             color: blue;
@@ -49,34 +50,45 @@
             font-size: 1.1em;
             cursor: pointer;
             transition: all 0.2s;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            position: relative;
         }
         .category-btn:hover, .category-btn.active {
             background-color: #A0522D;
             font-weight: bold;
         }
+        /* 为活动按钮添加指示器 */
+        .category-btn.active::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: #FFD700;
+        }
         #content {
             flex: 1;
-            padding: 15px;
+            padding: 10px 15px;  /* 减少上下内边距 */
             height: 100vh;
             overflow-y: auto;
         }
         .menu-section {
             display: none;
-            background-color: #444;
+            background-color: #444;  /* 灰色背景 */
             padding: 15px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .menu-section.active {
             display: block;
         }
         .menu-section h2 {
+            /* 黄色标题 */
             color: #FFD700;
-            border-bottom: 1px solid #666;
             padding-bottom: 8px;
             margin: 0 0 10px;
             font-size: 1.3em;
+            border-bottom: 2px solid #666;
         }
         ul {
             list-style: none;
@@ -95,28 +107,25 @@
         }
         .drink-info {
             flex: 1;
-            min-width: 0;
         }
         .drink-name {
             font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: #FFD700;  /* 黄色 */
         }
         .drink-price {
             color: #FFA500;
             font-weight: bold;
             margin-top: 4px;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         .options {
             margin-top: 8px;
             font-size: 0.85em;
             color: #B0B0B0;
             width: 100%;
-            padding-left: 5px;
             display: flex;
             justify-content: space-between;
         }
@@ -124,6 +133,7 @@
             background-color: #333;
             padding: 3px 8px;
             border-radius: 3px;
+            color: #FFD700;  /* 黄色 */
         }
 
         /* 其他饮品项样式 */
@@ -134,65 +144,63 @@
         }
         .item-name {
             flex: 1;
-            min-width: 100px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            color: #FFD700;  /* 黄色 */
         }
         .item-price {
             color: #FFA500;
             font-weight: bold;
-            margin-left: 10px;
             text-align: right;
-            min-width: 100px;
         }
 
-        /* 移动端适配 */
+        /* 移动端适配 - 根据图片调整 */
         @media (max-width: 768px) {
             body {
                 font-size: 12px;
                 min-width: 320px;
             }
             #sidebar {
-                width: 30%;
-                padding: 5px 0;
+                /* 移动端进一步缩小边距 */
+                width: 120px;  /* 从150px缩小 */
+                padding: 0;
+            }
+            #sidebar h1 {
+                padding: 10px 3px;
+                font-size: 1.2em;
             }
             #content {
-                width: 70%;
-                padding: 10px;
+                width: calc(100% - 120px);
+                padding: 5px;
             }
             .category-btn {
-                padding: 6px 5px 6px 8px;
+                padding: 10px 5px;
+                font-size: 1em;
             }
             .drink-name, .drink-price, .item-name, .item-price {
                 font-size: 0.9em;
             }
             .options {
                 flex-wrap: wrap;
-                font-size: 0.8em;
             }
             .option-item {
                 margin-bottom: 4px;
             }
         }
 
-        /* 超小屏幕优化 */
+        /* 超小屏幕优化 - 根据图片调整 */
         @media (max-width: 480px) {
             #sidebar {
-                width: 35%;
-                padding: 3px 0;
+                width: 100px;  /* 最小宽度 */
             }
             #sidebar h1 {
-                padding: 0 3px;
-                margin: 8px 0 10px;
-                font-size: 1.2em;
+                padding: 8px 2px;
+                font-size: 1.1em;
             }
             #content {
-                width: 65%;
-                padding: 8px;
+                width: calc(100% - 100px);
+                padding: 5px;
             }
             .category-btn {
-                padding: 5px 4px 5px 6px;
+                padding: 8px 3px;
                 font-size: 0.9em;
             }
             .drink-name, .drink-price, .item-name, .item-price {
@@ -222,31 +230,38 @@
             <ul>
                 <li>
         <div class="regular-item">
-            <span class="item-name">J1_RIO中杯￥12/大杯￥18</span>
+            <span class="item-name">J1_RIO</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J2_啤酒中杯￥12/大杯￥18</span>
+            <span class="item-name">J2_啤酒</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J3_劲酒中杯￥12/大杯￥18</span>
+            <span class="item-name">J3_劲酒</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J5_红酒中杯￥12/大杯￥18</span>
+            <span class="item-name">J5_红酒</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J6_葡萄酒中杯￥12/大杯￥18</span>
+            <span class="item-name">J6_葡萄酒</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J7_日落中杯￥12/大杯￥18</span>
+            <span class="item-name">J7_日落</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">J8_人生中杯￥12/大杯￥18</span>
+            <span class="item-name">J8_人生</span>
+            <span class="item-price">中杯￥12/大杯￥18</span>
         </div>
     </li>
             </ul>
@@ -257,35 +272,43 @@
             <ul>
                 <li>
         <div class="regular-item">
-            <span class="item-name">C1_柠檬鸡爪小份￥18/大份￥28</span>
+            <span class="item-name">C1_柠檬鸡爪</span>
+            <span class="item-price">小份￥18/大份￥28</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C2_虎皮鸡爪小份￥15/大份￥25</span>
+            <span class="item-name">C2_虎皮鸡爪</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C3_豌豆小份￥15/大份￥25</span>
+            <span class="item-name">C3_豌豆</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C5_海草小份￥15/大份￥25</span>
+            <span class="item-name">C5_海草</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C6_酸豆芽小份￥15/大份￥25</span>
+            <span class="item-name">C6_酸豆芽</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C7_臭豆腐小份￥15/大份￥25</span>
+            <span class="item-name">C7_臭豆腐</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C8_火山烤肠小份￥15/大份￥25</span>
+            <span class="item-name">C8_火山烤肠</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li><li>
         <div class="regular-item">
-            <span class="item-name">C9_人肉叉烧包小份￥15/大份￥25</span>
+            <span class="item-name">C9_人肉叉烧包</span>
+            <span class="item-price">小份￥15/大份￥25</span>
         </div>
     </li>
             </ul>
