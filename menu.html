@@ -75,6 +75,7 @@
             padding: 10px 15px;
             height: 100vh;
             overflow-y: auto;
+            background-color: #444;
         }
         .menu-section {
             display: none;
@@ -113,6 +114,8 @@
             margin-bottom: 5px;
             font-weight: bold;
             color: #FFA500;
+            border-bottom: 1px solid #666;
+            padding-bottom: 8px;
         }
         .menu-header > div {
             flex: 1;
@@ -125,11 +128,13 @@
         .menu-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         .item-name {
             flex: 2;
             color: #FFD700;
             font-weight: bold;
+            padding: 5px 0;
         }
         .price-container {
             flex: 1;
@@ -140,11 +145,13 @@
             flex: 1;
             color: #FFA500;
             text-align: center;
+            font-weight: bold;
         }
         .price-large {
             flex: 1;
             color: #FFA500;
             text-align: center;
+            font-weight: bold;
         }
         .drink-info {
             display: flex;
@@ -154,6 +161,7 @@
         .drink-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
         .drink-name {
             font-weight: bold;
@@ -169,6 +177,7 @@
             color: #FFA500;
             flex: 1;
             text-align: center;
+            font-weight: bold;
         }
         .options {
             margin-top: 10px;
@@ -176,6 +185,7 @@
             color: #B0B0B0;
             display: flex;
             justify-content: space-between;
+            padding-left: 5px;
         }
         .option-item {
             background-color: #333;
@@ -204,6 +214,17 @@
             #content {
                 padding: 8px;
             }
+            .menu-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 5px;
+            }
+            .menu-header > div {
+                text-align: left;
+                flex: none;
+                width: 100%;
+                margin-bottom: 3px;
+            }
             .menu-item, .drink-row {
                 flex-wrap: wrap;
             }
@@ -213,6 +234,7 @@
             }
             .price-container, .drink-price-container {
                 flex-basis: 100%;
+                justify-content: space-around;
             }
         }
 
@@ -256,7 +278,7 @@
         <div id="drinks" class="menu-section active">
             <h2>酒水类</h2>
             <div class="menu-header">
-                <div>名称</div>
+                <div></div>
                 <div class="price-medium">中杯</div>
                 <div class="price-large">大杯</div>
             </div>
@@ -324,7 +346,7 @@
         <div id="snacks" class="menu-section">
             <h2>小吃类</h2>
             <div class="menu-header">
-                <div>名称</div>
+                <div></div>
                 <div class="price-medium">小份</div>
                 <div class="price-large">大份</div>
             </div>
@@ -333,64 +355,64 @@
         <div class="menu-item">
             <div class="item-name">C1 柠檬鸡爪</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥18</div>
+                <div class="price-large">￥28</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C2 虎皮鸡爪</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C3 豌豆</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C5 海草</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C6 酸豆芽</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C7 臭豆腐</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C8 火山烤肠</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C9 人肉叉烧包</div>
             <div class="price-container">
-                <div class="price-medium">￥12</div>
-                <div class="price-large">￥18</div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li>
@@ -406,7 +428,7 @@
                 <div class="drink-name">A1 暴打柠檬茶</div>
                 <div class="drink-price-container">
                     <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-large">￥15</div>
                 </div>
             </div>
             
@@ -421,7 +443,7 @@
             <div class="drink-row">
                 <div class="drink-name">A2 鸭屎香柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
+                    <div class="drink-price-medium">￥15</div>
                     <div class="drink-price-large">￥18</div>
                 </div>
             </div>
@@ -438,7 +460,7 @@
                 <div class="drink-name">A3 金桔柠檬茶</div>
                 <div class="drink-price-container">
                     <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-large">￥15</div>
                 </div>
             </div>
             
@@ -453,8 +475,8 @@
             <div class="drink-row">
                 <div class="drink-name">A5 香橙柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-medium">￥14</div>
+                    <div class="drink-price-large">￥17</div>
                 </div>
             </div>
             
@@ -469,8 +491,8 @@
             <div class="drink-row">
                 <div class="drink-name">A6 话梅柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-medium">￥16</div>
+                    <div class="drink-price-large">￥19</div>
                 </div>
             </div>
             
@@ -485,8 +507,8 @@
             <div class="drink-row">
                 <div class="drink-name">A7 红宝石柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-medium">￥18</div>
+                    <div class="drink-price-large">￥22</div>
                 </div>
             </div>
             
@@ -501,8 +523,8 @@
             <div class="drink-row">
                 <div class="drink-name">A8 伯牙绝弦</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-medium">￥20</div>
+                    <div class="drink-price-large">￥25</div>
                 </div>
             </div>
             
@@ -517,8 +539,8 @@
             <div class="drink-row">
                 <div class="drink-name">A9 红糖珍珠奶茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12</div>
-                    <div class="drink-price-large">￥18</div>
+                    <div class="drink-price-medium">￥16</div>
+                    <div class="drink-price-large">￥20</div>
                 </div>
             </div>
             
