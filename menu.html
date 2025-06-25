@@ -19,6 +19,7 @@
             color: #FFD700;
             line-height: 1.2;
             background-color: #555;
+            position: relative;
         }
         #sidebar {
             width: 100px;
@@ -56,7 +57,7 @@
             white-space: nowrap;
         }
         .category-btn:hover, .category-btn.active {
-            background-color: #A0522极致的对齐D;
+            background-color: #A0522D;
             font-weight: bold;
             font-size: 1.25em;
             color: #FFD700;
@@ -72,7 +73,7 @@
         }
         #content {
             flex: 1;
-            padding: 10px 15px;
+            padding: 10px 15px 70px; /* 底部留出购物车按钮空间 */
             height: 100vh;
             overflow-y: auto;
             background-color: #444;
@@ -105,6 +106,7 @@
         li {
             padding: 8px 0;
             border-bottom: 1px solid #555;
+            position: relative;
         }
         .menu-header {
             display: flex;
@@ -181,6 +183,187 @@
             color: #FFD700 !important;
         }
 
+        /* 购物车按钮样式 */
+        .cart-button {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #8B4513;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        .cart-button:hover {
+            transform: scale(1.1);
+            background-color: #A0522D;
+        }
+        .cart-icon {
+            font-size: 24px;
+            color: #FFD700;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff0000;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* 结算按钮样式 */
+        .checkout-button {
+            position: fixed;
+            right: 90px;
+            bottom: 20px;
+            background-color: #8B4513;
+            color: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            font-weight: bold;
+            display: none; /* 初始隐藏 */
+            transition: all 0.3s;
+        }
+        .checkout-button:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+        }
+
+        /* 购物车模态框样式 */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            display: none;
+        }
+        .cart-content {
+            background-color: #444;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-header {
+            background-color: #8B4513;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-title {
+            color: #FFD700;
+            font-size: 1.5em;
+        }
+        .close-cart {
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #666;
+        }
+        .cart-item-name {
+            flex: 1;
+            color: #FFD700;
+        }
+        .cart-item-price {
+            color: #FFD700;
+            width: 80px;
+            text-align: right;
+        }
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+        }
+        .cart-item-quantity {
+            margin: 0 10px;
+            color: #FFD700;
+            min-width: 20px;
+            text-align: center;
+        }
+        .cart-item-btn {
+            background-color: #8B4513;
+            border: none;
+            color: #FFD700;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-item-btn:hover {
+            background-color: #A0522D;
+        }
+        .cart-footer {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-total {
+            color: #FFD700;
+            font-size: 1.2em;
+        }
+        .confirm-btn {
+            background-color: #8B4513;
+            color: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .confirm-btn:hover {
+            background-color: #A0522D;
+        }
+        .empty-cart-message {
+            text-align: center;
+            padding: 30px;
+            color: #FFD700;
+            font-size: 1.2em;
+        }
+
         /* 移动端适配 */
         @media (max-width: 768px) {
             body {
@@ -214,6 +397,26 @@
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
                 width: 50px;
+            }
+            .cart-button {
+                width: 50px;
+                height: 50px;
+                right: 15px;
+                bottom: 15px;
+            }
+            .cart-icon {
+                font-size: 20px;
+            }
+            .cart-badge {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+            .checkout-button {
+                right: 75px;
+                bottom: 15px;
+                padding: 8px 15px;
+                font-size: 0.9em;
             }
         }
 
@@ -257,6 +460,50 @@
                 width: 100%;
                 margin-bottom: 5px;
             }
+            .cart-button {
+                width: 45px;
+                height: 45px;
+                right: 10px;
+                bottom: 10px;
+            }
+            .cart-icon {
+                font-size: 18px;
+            }
+            .cart-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+            }
+            .checkout-button {
+                right: 60px;
+                bottom: 10px;
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* 添加商品效果 */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+        .add-to-cart {
+            background-color: #8B4513;
+            color: #FFD700;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .add-to-cart:hover {
+            background-color: #A0522D;
         }
     </style>
 </head>
@@ -283,6 +530,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J1 RIO" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -291,6 +539,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J2 啤酒" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -299,6 +548,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J3 劲酒" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -307,6 +557,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J5 红酒" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -315,6 +566,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J6 葡萄酒" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -323,6 +575,7 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J7 日落" data-price="12">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -331,13 +584,14 @@
                 <div class="price-medium">￥12</div>
                 <div class="price-large">￥18</div>
             </div>
+            <button class="add-to-cart" data-name="J8 人生" data-price="12">+</button>
         </div>
     </li>
             </ul>
         </div>
 
         <div id="snacks" class="menu-section">
-            <h2>小吃类</h2>  <!-- 修复这里的标题标签 -->
+            <h2>小吃类</h2>
             <div class="menu-header">
                 <div class="price-medium">小份</div>
                 <div class="price-large">大份</div>
@@ -350,6 +604,7 @@
                 <div class="price-medium">￥18</div>
                 <div class="price-large">￥28</div>
             </div>
+            <button class="add-to-cart" data-name="C1 柠檬鸡爪" data-price="18">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -358,6 +613,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C2 虎皮鸡爪" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -366,6 +622,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C3 豌豆" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -374,6 +631,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C5 海草" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -382,6 +640,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C6 酸豆芽" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -390,6 +649,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C7 臭豆腐" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -398,6 +658,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C8 火山烤肠" data-price="15">+</button>
         </div>
     </li><li>
         <div class="menu-item">
@@ -406,6 +667,7 @@
                 <div class="price-medium">￥15</div>
                 <div class="price-large">￥25</div>
             </div>
+            <button class="add-to-cart" data-name="C9 人肉叉烧包" data-price="15">+</button>
         </div>
     </li>
             </ul>
@@ -422,6 +684,7 @@
                     <div class="drink-price-medium">￥12</div>
                     <div class="drink-price-large">￥15</div>
                 </div>
+                <button class="add-to-cart" data-name="A1 暴打柠檬茶" data-price="12">+</button>
             </div>
             
         <div class="options">
@@ -438,6 +701,7 @@
                     <div class="drink-price-medium">￥15</div>
                     <div class="drink-price-large">￥18</div>
                 </div>
+                <button class="add-to-cart" data-name="A2 鸭屎香柠檬茶" data-price="15">+</button>
             </div>
             
         <div class="options">
@@ -454,6 +718,7 @@
                     <div class="drink-price-medium">￥12</div>
                     <div class="drink-price-large">￥15</div>
                 </div>
+                <button class="add-to-cart" data-name="A3 金桔柠檬茶" data-price="12">+</button>
             </div>
             
         <div class="options">
@@ -470,6 +735,7 @@
                     <div class="drink-price-medium">￥14</div>
                     <div class="drink-price-large">￥17</div>
                 </div>
+                <button class="add-to-cart" data-name="A5 香橙柠檬茶" data-price="14">+</button>
             </div>
             
         <div class="options">
@@ -486,6 +752,7 @@
                     <div class="drink-price-medium">￥16</div>
                     <div class="drink-price-large">￥19</div>
                 </div>
+                <button class="add-to-cart" data-name="A6 话梅柠檬茶" data-price="16">+</button>
             </div>
             
         <div class="options">
@@ -502,6 +769,7 @@
                     <div class="drink-price-medium">￥18</div>
                     <div class="drink-price-large">￥22</div>
                 </div>
+                <button class="add-to-cart" data-name="A7 红宝石柠檬茶" data-price="18">+</button>
             </div>
             
         <div class="options">
@@ -518,6 +786,7 @@
                     <div class="drink-price-medium">￥20</div>
                     <div class="drink-price-large">￥25</div>
                 </div>
+                <button class="add-to-cart" data-name="A8 伯牙绝弦" data-price="20">+</button>
             </div>
             
         <div class="options">
@@ -534,6 +803,7 @@
                     <div class="drink-price-medium">￥16</div>
                     <div class="drink-price-large">￥20</div>
                 </div>
+                <button class="add-to-cart" data-name="A9 红糖珍珠奶茶" data-price="16">+</button>
             </div>
             
         <div class="options">
@@ -547,7 +817,36 @@
         </div>
     </div>
 
+    <!-- 购物车按钮 -->
+    <div class="cart-button" onclick="openCart()">
+        <div class="cart-icon">🛒</div>
+        <div class="cart-badge" id="cart-count">0</div>
+    </div>
+
+    <!-- 结算按钮 -->
+    <button class="checkout-button" id="checkout-button" onclick="openCart()">结算</button>
+
+    <!-- 购物车模态框 -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 class="cart-title">购物车</h2>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- 购物车商品将在这里动态生成 -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">总计: ￥<span id="cart-total">0.00</span></div>
+                <button class="confirm-btn" onclick="placeOrder()">确认下单</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // 购物车数据
+        let cart = [];
+
         function showCategory(categoryId) {
             // 切换内容显示
             document.querySelectorAll('.menu-section').forEach(section => {
@@ -566,6 +865,157 @@
                 document.getElementById('content').scrollTo(0, 0);
             }
         }
+
+        // 添加商品到购物车
+        function addToCart(name, price) {
+            // 查找是否已存在相同商品
+            const existingItem = cart.find(item => item.name === name && item.price === parseFloat(price));
+
+            if (existingItem) {
+                // 如果已存在，增加数量
+                existingItem.quantity += 1;
+            } else {
+                // 否则添加新商品
+                cart.push({
+                    name: name,
+                    price: parseFloat(price),
+                    quantity: 1
+                });
+            }
+
+            // 更新购物车UI
+            updateCartUI();
+
+            // 显示结算按钮
+            document.getElementById('checkout-button').style.display = 'block';
+
+            // 添加动画效果
+            const cartButton = document.querySelector('.cart-button');
+            cartButton.classList.remove('pulse');
+            void cartButton.offsetWidth; // 触发重绘
+            cartButton.classList.add('pulse');
+        }
+
+        // 从购物车移除商品
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // 更新购物车商品数量
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+
+            // 如果数量为0，移除商品
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                updateCartUI();
+            }
+        }
+
+        // 更新购物车UI
+        function updateCartUI() {
+            // 更新购物车数量徽章
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+
+            // 更新购物车列表
+            const cartItems = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">购物车是空的</div>';
+                document.getElementById('checkout-button').style.display = 'none';
+            } else {
+                cartItems.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const itemTotal = (item.price * item.quantity).toFixed(2);
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">￥${item.price.toFixed(2)} × ${item.quantity}</div>
+                        <div class="cart-item-controls">
+                            <button class="cart-item-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="cart-item-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            <button class="cart-item-btn" onclick="removeFromCart(${index})" style="margin-left: 10px;">×</button>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+            }
+
+            // 更新总计
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+        }
+
+        // 打开购物车
+        function openCart() {
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        // 关闭购物车
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        // 下单
+        function placeOrder() {
+            if (cart.length === 0) {
+                alert('购物车是空的!');
+                return;
+            }
+
+            // 创建订单数据
+            const order = {
+                items: cart.map(item => ({
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                })),
+                total: parseFloat(document.getElementById('cart-total').textContent),
+                timestamp: new Date().toISOString()
+            };
+
+            // 在实际应用中，这里会发送订单到服务器
+            // 这里我们只是保存到localStorage并显示确认信息
+            saveOrder(order);
+
+            // 显示确认信息
+            alert(`下单成功！总计：￥${order.total.toFixed(2)}`);
+
+            // 清空购物车
+            cart = [];
+            updateCartUI();
+            closeCart();
+        }
+
+        // 保存订单到localStorage
+        function saveOrder(order) {
+            // 获取现有订单或创建新数组
+            const orders = JSON.parse(localStorage.getItem('bar_orders') || '[]');
+
+            // 添加新订单
+            orders.push(order);
+
+            // 保存回localStorage
+            localStorage.setItem('bar_orders', JSON.stringify(orders));
+        }
+
+        // 页面加载时初始化购物车
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI();
+
+            // 使用事件委托处理所有点击事件
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('add-to-cart')) {
+                    const name = event.target.getAttribute('data-name');
+                    const price = event.target.getAttribute('data-price');
+                    addToCart(name, price);
+                }
+            });
+        });
     </script>
 </body>
 </html>
