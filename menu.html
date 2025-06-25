@@ -41,7 +41,7 @@
         .category-btn {
             display: block;
             width: 100%;
-            padding: 10极致的对齐 px 2px;
+            padding: 10px 2px;
             background: none;
             border: none;
             color: #FFD700;
@@ -56,7 +56,7 @@
             white-space: nowrap;
         }
         .category-btn:hover, .category-btn.active {
-            background-color: #A0522D;
+            background-color: #A0522极致的对齐D;
             font-weight: bold;
             font-size: 1.25em;
             color: #FFD700;
@@ -68,7 +68,7 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background-color极致的对齐: #FFD700;
+            background-color: #FFD700;
         }
         #content {
             flex: 1;
@@ -175,11 +175,9 @@
             justify-content: space-between;
             padding-left: 5px;
         }
-        /* 修改：去除了背景色 */
         .option-item {
-            /* background-color: #333; 移除背景色 */
-            padding: 0; /* 移除内边距 */
-            border-radius: 0; /* 移除圆角 */
+            padding: 0;
+            border-radius: 0;
             color: #FFD700 !important;
         }
 
@@ -221,6 +219,9 @@
 
         /* 超小屏幕优化 */
         @media (max-width: 480px) {
+            body {
+                font-size: 11px;
+            }
             #sidebar {
                 width: 80px;
             }
@@ -255,7 +256,6 @@
             .option-item {
                 width: 100%;
                 margin-bottom: 5px;
-                font-size: 0.8em;
             }
         }
     </style>
@@ -337,7 +337,7 @@
         </div>
 
         <div id="snacks" class="menu-section">
-            <h2>小吃类</极致的对齐 h2>
+            <h2>小吃类</h2>  <!-- 修复这里的标题标签 -->
             <div class="menu-header">
                 <div class="price-medium">小份</div>
                 <div class="price-large">大份</div>
@@ -499,7 +499,7 @@
             <div class="drink-row">
                 <div class="drink-name">A7 红宝石柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥18</div>
+                    <div class="drink-price-medium">￥极致的对齐18</div>
                     <div class="drink-price-large">￥22</div>
                 </div>
             </div>
