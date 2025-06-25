@@ -5,44 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
-        /* 基础样式 */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
             min-height: 100vh;
-            font-size: 14px;
+            background-color: #555;
             color: #FFD700;
             line-height: 1.2;
-            background-color: #555;
             position: relative;
         }
+
+        /* 左侧导航栏样式 */
         #sidebar {
             width: 100px;
-            background-color: #8B4513;
+            background-color: #e67e22;
             position: sticky;
             top: 0;
             height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
+            padding-top: 10px;
         }
+
         #sidebar h1 {
             text-align: center;
-            padding: 12px 2px;
-            font-size: 1.5em;
+            padding: 12px 5px;
+            font-size: 1.4em;
             color: #FFD700;
-            background-color: #A0522D;
+            background-color: #d35400;
             margin-bottom: 8px;
         }
+
         .category-btn {
             display: block;
             width: 100%;
-            padding: 10px 2px;
+            padding: 12px 5px;
             background: none;
             border: none;
             color: #FFD700;
@@ -56,12 +60,14 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         .category-btn:hover, .category-btn.active {
-            background-color: #A0522D;
+            background-color: #d35400;
             font-weight: bold;
             font-size: 1.25em;
             color: #FFD700;
         }
+
         .category-btn.active::after {
             content: "";
             position: absolute;
@@ -71,110 +77,149 @@
             width: 4px;
             background-color: #FFD700;
         }
+
+        /* 主内容区样式 */
         #content {
             flex: 1;
-            padding: 10px 15px 70px;
+            padding: 15px;
             height: 100vh;
             overflow-y: auto;
             background-color: #444;
         }
+
         .menu-section {
             display: none;
             padding: 15px;
             border-radius: 5px;
         }
+
         .menu-section.active {
             display: block;
             animation: fadeIn 0.3s;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         .menu-section h2 {
             color: #FFD700;
             padding-bottom: 8px;
             margin: 0 0 15px;
-            font-size: 1.3em;
+            font-size: 1.6em;
             border-bottom: 2px solid #666;
         }
+
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         li {
-            padding: 8px 0;
-            border-bottom: 1px solid #555;
-            position: relative;
+            padding: 12px 0;
+            border-bottom: 1px solid #666;
         }
+
+        /* 常规商品样式 */
         .menu-item {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
+
         .item-name {
             flex: 1;
             color: #FFD700;
             font-weight: bold;
+            font-size: 1.3em;
             padding: 5px 0;
         }
+
         .price-container {
             display: flex;
-            width: 140px;
+            width: 180px;
         }
+
         .price-medium, .price-large {
-            width: 70px;
+            width: 90px;
             color: #FFD700;
-            text-align: right;
+            text-align: center;
             font-weight: bold;
-            padding-right: 5px;
-            white-space: nowrap;
+            padding: 0 5px;
         }
+
+        .add-to-cart {
+            background-color: #e67e22;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #d35400;
+        }
+
+        /* 饮品样式 */
         .drink-info {
             display: flex;
             flex-direction: column;
         }
+
         .drink-row {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
+
         .drink-name {
             font-weight: bold;
             color: #FFD700;
             flex: 1;
+            font-size: 1.3em;
         }
+
         .drink-price-container {
             display: flex;
-            width: 140px;
+            width: 180px;
         }
+
         .drink-price-medium, .drink-price-large {
-            width: 70px;
+            width: 90px;
             color: #FFD700;
-            text-align: right;
+            text-align: center;
             font-weight: bold;
-            padding-right: 5px;
-            white-space: nowrap;
+            padding: 0 5px;
         }
+
         .options {
-            margin-top: 10px;
-            font-size: 0.85em;
-            color: #FFD700 !important;
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #ccc !important;
             display: flex;
             justify-content: space-between;
             padding-left: 5px;
         }
+
         .option-item {
             padding: 0;
             border-radius: 0;
-            color: #FFD700 !important;
         }
+
+        /* 购物车按钮 */
         .cart-button {
             position: fixed;
             right: 20px;
             bottom: 20px;
             width: 60px;
             height: 60px;
-            background-color: #8B4513;
+            background-color: #e67e22;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -184,14 +229,17 @@
             z-index: 100;
             transition: all 0.3s;
         }
+
         .cart-button:hover {
             transform: scale(1.1);
-            background-color: #A0522D;
+            background-color: #d35400;
         }
+
         .cart-icon {
-            font-size: 24px;
+            font-size: 30px;
             color: #FFD700;
         }
+
         .cart-badge {
             position: absolute;
             top: -5px;
@@ -207,26 +255,8 @@
             font-size: 12px;
             font-weight: bold;
         }
-        .checkout-button {
-            position: fixed;
-            right: 90px;
-            bottom: 20px;
-            background-color: #8B4513;
-            color: #FFD700;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-            font-weight: bold;
-            display: none;
-            transition: all 0.3s;
-        }
-        .checkout-button:hover {
-            background-color: #A0522D;
-            transform: translateY(-2px);
-        }
+
+        /* 购物车弹窗 */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -240,6 +270,7 @@
             z-index: 200;
             display: none;
         }
+
         .cart-content {
             background-color: #444;
             width: 90%;
@@ -250,70 +281,89 @@
             display: flex;
             flex-direction: column;
         }
+
         .cart-header {
-            background-color: #8B4513;
+            background-color: #e67e22;
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .cart-title {
             color: #FFD700;
-            font-size: 1.5em;
+            font-size: 1.6em;
         }
+
         .close-cart {
             background: none;
             border: none;
             color: #FFD700;
-            font-size: 1.5em;
+            font-size: 1.8em;
             cursor: pointer;
+            padding: 5px 10px;
         }
+
         .cart-items {
             flex: 1;
-            overflow-y auto;
+            overflow-y: auto;
+            max-height: calc(80vh - 150px);
             padding: 15px;
         }
+
         .cart-item {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
             border-bottom: 1px solid #666;
         }
+
         .cart-item-name {
             flex: 1;
             color: #FFD700;
+            font-size: 1.2em;
         }
+
         .cart-item-price {
             color: #FFD700;
-            width: 80px;
+            width: 100px;
             text-align: right;
+            font-size: 1.2em;
         }
+
         .cart-item-controls {
             display: flex;
             align-items: center;
             margin-left: 15px;
         }
+
         .cart-item-quantity {
             margin: 0 10px;
             color: #FFD700;
             min-width: 20px;
             text-align: center;
+            font-size: 1.2em;
         }
+
         .cart-item-btn {
-            background-color: #8B4513;
+            background-color: #e67e22;
             border: none;
             color: #FFD700;
-            width: 25px;
-            height: 25px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
         }
+
         .cart-item-btn:hover {
-            background-color: #A0522D;
+            background-color: #d35400;
         }
+
         .cart-footer {
             background-color: #333;
             padding: 15px;
@@ -321,159 +371,174 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .cart-total {
             color: #FFD700;
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
+
         .confirm-btn {
-            background-color: #8B4513;
+            background-color: #e67e22;
             color: #FFD700;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
         }
+
         .confirm-btn:hover {
-            background-color: #A0522D;
+            background-color: #d35400;
         }
+
         .empty-cart-message {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: #FFD700;
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
-        .add-to-cart {
-            background-color: #8B4513;
-            color: #FFD700;
-            border: none;
-            padding: 2px 8px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 3px;
-            font-size: 0.8em;
-            transition: all 0.2s;
-        }
-        .add-to-cart:hover {
-            background-color: #A0522D;
-        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
             body {
-                font-size: 12px;
+                font-size: 13px;
                 min-width: 320px;
             }
+
             #sidebar {
-                width: 90px;
+                width: 85px;
             }
+
             #sidebar h1 {
-                padding: 10px 2px;
-                font-size: 1.4em;
+                padding: 10px 3px;
+                font-size: 1.3em;
             }
+
             .category-btn {
-                padding: 8px 2px;
+                padding: 10px 3px;
                 font-size: 1.0em;
             }
+
             .category-btn.active {
-                font-size: 1.15em;
+                font-size: 1.1em;
             }
+
             #content {
-                padding: 8px;
+                padding: 10px;
             }
+
             .price-container, .drink-price-container {
-                width: 120px;
+                width: 150px;
             }
+
             .price-medium, .price-large,
             .drink-price-medium, .drink-price-large {
-                width: 60px;
+                width: 75px;
             }
+
+            .add-to-cart {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+
             .cart-button {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
                 right: 15px;
                 bottom: 15px;
             }
+
             .cart-icon {
-                font-size: 20px;
+                font-size: 26px;
             }
+
+            .cart-badge {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 12px;
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 5px;
+            }
+
+            #sidebar h1 {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .category-btn {
+                margin: 5px;
+                padding: 8px;
+                width: auto;
+                border-radius: 4px;
+            }
+
+            #content {
+                padding: 10px;
+                margin-left: 0;
+            }
+
+            .price-container, .drink-price-container {
+                width: 130px;
+            }
+
+            .price-medium, .price-large,
+            .drink-price-medium, .drink-price-large {
+                width: 65px;
+            }
+
+            .item-name, .drink-name {
+                font-size: 1.2em;
+            }
+
+            .cart-button {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            .cart-icon {
+                font-size: 22px;
+            }
+
             .cart-badge {
                 width: 20px;
                 height: 20px;
                 font-size: 10px;
             }
-            .checkout-button {
-                right: 75px;
-                bottom: 15px;
-                padding: 8px 15px;
-                font-size: 0.9em;
-            }
         }
-        @media (max-width: 480px) {
-            body {
-                font-size: 11px;
-            }
-            #sidebar {
-                width: 80px;
-            }
-            #sidebar h1 {
-                padding: 8px 1px;
-                font-size: 1.2em;
-            }
-            .category-btn {
-                padding: 7px 1px;
-                font-size: 0.9em;
-            }
-            .category-btn.active {
-                font-size: 1.05em;
-            }
-            #content {
-                padding: 5px;
-            }
-            .price-container, .drink-price-container {
-                width: 100px;
-            }
-            .price-medium, .price-large,
-            .drink-price-medium, .drink-price-large {
-                width: 50px;
-            }
-            .options {
-                flex-direction: column;
-            }
-            .option-item {
-                width: 100%;
-                margin-bottom: 5px;
-            }
-            .cart-button {
-                width: 45px;
-                height: 45px;
-                right: 10px;
-                bottom: 10px;
-            }
-            .cart-icon {
-                font-size: 18px;
-            }
-            .cart-badge {
-                width: 18px;
-                height: 18px;
-                font-size: 9px;
-            }
-            .checkout-button {
-                right: 60px;
-                bottom: 10px;
-                padding: 6px 12px;
-                font-size: 0.8em;
-            }
-        }
+
+        /* 动画效果 */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+
         .pulse {
             animation: pulse 0.5s ease;
         }
     </style>
 </head>
 <body>
+    <!-- 左侧导航栏 -->
     <div id="sidebar">
         <h1>菜单分类</h1>
         <button class="category-btn active" onclick="showCategory('drinks')">酒水类</button>
@@ -481,7 +546,9 @@
         <button class="category-btn" onclick="showCategory('lemontea')">柠檬茶</button>
     </div>
 
+    <!-- 主内容区 -->
     <div id="content">
+        <!-- 酒水类 -->
         <div id="drinks" class="menu-section active">
             <h2>酒水类</h2>
             <ul>
@@ -519,10 +586,10 @@
         </div>
     </li><li>
         <div class="menu-item">
-            <div class="item-name">J6 葡萄酒</div>
+            <div class="item-name">J6 白葡萄酒</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J6 葡萄酒(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J6 葡萄酒(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12<button class="add-to-cart" data-name="J6 白葡萄酒(中杯)" data-price="12">+</button></div>
+                <div class="price-large">￥18<button class="add-to-cart" data-name="J6 白葡萄酒(大杯)" data-price="18">+</button></div>
             </div>
         </div>
     </li><li>
@@ -545,18 +612,11 @@
             </ul>
         </div>
 
+        <!-- 小吃类 -->
         <div id="snacks" class="menu-section">
             <h2>小吃类</h2>
             <ul>
                 <li>
-        <div class="menu-item">
-            <div class="item-name">C1 柠檬鸡爪</div>
-            <div class="price-container">
-                <div class="price-medium">￥18<button class="add-to-cart" data-name="C1 柠檬鸡爪(中杯)" data-price="18">+</button></div>
-                <div class="price-large">￥28<button class="add-to-cart" data-name="C1 柠檬鸡爪(大杯)" data-price="28">+</button></div>
-            </div>
-        </div>
-    </li><li>
         <div class="menu-item">
             <div class="item-name">C2 虎皮鸡爪</div>
             <div class="price-container">
@@ -616,6 +676,7 @@
             </ul>
         </div>
 
+        <!-- 柠檬茶 -->
         <div id="lemontea" class="menu-section">
             <h2>柠檬茶</h2>
             <ul>
@@ -628,12 +689,10 @@
                     <div class="drink-price-large">￥15<button class="add-to-cart" data-name="A1 暴打柠檬茶(大杯)" data-price="15">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -644,12 +703,10 @@
                     <div class="drink-price-large">￥18<button class="add-to-cart" data-name="A2 鸭屎香柠檬茶(大杯)" data-price="18">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -660,12 +717,10 @@
                     <div class="drink-price-large">￥15<button class="add-to-cart" data-name="A3 金桔柠檬茶(大杯)" data-price="15">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -676,12 +731,10 @@
                     <div class="drink-price-large">￥17<button class="add-to-cart" data-name="A5 香橙柠檬茶(大杯)" data-price="17">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -692,12 +745,10 @@
                     <div class="drink-price-large">￥19<button class="add-to-cart" data-name="A6 话梅柠檬茶(大杯)" data-price="19">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -708,12 +759,10 @@
                     <div class="drink-price-large">￥22<button class="add-to-cart" data-name="A7 红宝石柠檬茶(大杯)" data-price="22">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -724,12 +773,10 @@
                     <div class="drink-price-large">￥25<button class="add-to-cart" data-name="A8 伯牙绝弦(大杯)" data-price="25">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li><li>
         <div class="drink-info">
@@ -740,25 +787,23 @@
                     <div class="drink-price-large">￥20<button class="add-to-cart" data-name="A9 红糖珍珠奶茶(大杯)" data-price="20">+</button></div>
                 </div>
             </div>
-            
-        <div class="options">
-            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-        </div>
-    
+            <div class="options">
+                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+            </div>
         </div>
     </li>
             </ul>
         </div>
     </div>
 
+    <!-- 购物车按钮 -->
     <div class="cart-button" onclick="openCart()">
         <div class="cart-icon">🛒</div>
         <div class="cart-badge" id="cart-count">0</div>
     </div>
 
-    <button class="checkout-button" id="checkout-button" onclick="openCart()">结算</button>
-
+    <!-- 购物车弹窗 -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
@@ -776,25 +821,29 @@
     </div>
 
     <script>
+        // 购物车数据
         let cart = [];
 
+        // 显示分类
         function showCategory(categoryId) {
+            // 隐藏所有部分
             document.querySelectorAll('.menu-section').forEach(section => {
                 section.classList.remove('active');
             });
+
+            // 显示选中的分类
             document.getElementById(categoryId).classList.add('active');
 
+            // 更新按钮状态
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.currentTarget.classList.add('active');
-
-            if (window.innerWidth <= 768) {
-                document.getElementById('content').scrollTo(0, 0);
-            }
         }
 
+        // 添加到购物车
         function addToCart(name, price) {
+            // 检查商品是否已在购物车中
             const existingItem = cart.find(item => item.name === name && item.price === parseFloat(price));
 
             if (existingItem) {
@@ -809,19 +858,20 @@
 
             updateCartUI();
 
-            document.getElementById('checkout-button').style.display = 'block';
-
+            // 添加动画效果
             const cartButton = document.querySelector('.cart-button');
             cartButton.classList.remove('pulse');
-            void cartButton.offsetWidth;
+            void cartButton.offsetWidth; // 触发重绘
             cartButton.classList.add('pulse');
         }
 
+        // 从购物车移除
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCartUI();
         }
 
+        // 更新数量
         function updateQuantity(index, change) {
             cart[index].quantity += change;
 
@@ -832,18 +882,19 @@
             }
         }
 
+        // 更新购物车UI
         function updateCartUI() {
+            // 更新购物车商品数量
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('cart-count').textContent = totalItems;
 
+            // 更新购物车商品列表
             const cartItems = document.getElementById('cart-items');
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div class="empty-cart-message">购物车是空的</div>';
-                document.getElementById('checkout-button').style.display = 'none';
             } else {
                 cartItems.innerHTML = '';
                 cart.forEach((item, index) => {
-                    const itemTotal = (item.price * item.quantity).toFixed(2);
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
@@ -853,59 +904,50 @@
                             <button class="cart-item-btn" onclick="updateQuantity(${index}, -1)">-</button>
                             <span class="cart-item-quantity">${item.quantity}</span>
                             <button class="cart-item-btn" onclick="updateQuantity(${index}, 1)">+</button>
-                            <button class="cart-item-btn" onclick="removeFromCart(${index})" style="margin-left: 10px;">×</button>
+                            <button class="cart-item-btn" onclick="removeFromCart(${index})">×</button>
                         </div>
                     `;
                     cartItems.appendChild(cartItem);
                 });
             }
 
+            // 更新总价
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             document.getElementById('cart-total').textContent = total.toFixed(2);
         }
 
+        // 打开购物车
         function openCart() {
             document.getElementById('cart-modal').style.display = 'flex';
         }
 
+        // 关闭购物车
         function closeCart() {
             document.getElementById('cart-modal').style.display = 'none';
         }
 
+        // 下单
         function placeOrder() {
             if (cart.length === 0) {
                 alert('购物车是空的!');
                 return;
             }
 
-            const order = {
-                items: cart.map(item => ({
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity
-                })),
-                total: parseFloat(document.getElementById('cart-total').textContent),
-                timestamp: new Date().toISOString()
-            };
+            const total = parseFloat(document.getElementById('cart-total').textContent);
+            alert(`下单成功！总计：￥${total.toFixed(2)}`);
 
-            saveOrder(order);
-
-            alert(`下单成功！总计：￥${order.total.toFixed(2)}`);
-
+            // 清空购物车
             cart = [];
             updateCartUI();
             closeCart();
         }
 
-        function saveOrder(order) {
-            const orders = JSON.parse(localStorage.getItem('bar_orders') || '[]');
-            orders.push(order);
-            localStorage.setItem('bar_orders', JSON.stringify(orders));
-        }
-
+        // 初始化页面
         document.addEventListener('DOMContentLoaded', function() {
+            // 初始化购物车
             updateCartUI();
 
+            // 添加商品事件监听
             document.addEventListener('click', function(event) {
                 if (event.target.classList.contains('add-to-cart')) {
                     const name = event.target.getAttribute('data-name');
