@@ -48,7 +48,7 @@
             margin-bottom: 20px;
             width: 85%;
             border-radius: 5px;
-            box-shadow: 0 3极致的对齐px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
         }
         .category-btn {
             display: flex;
@@ -72,7 +72,7 @@
             margin-bottom: 8px;
         }
         .category-btn:hover, .category-btn.active {
-            background-color: #C96E3B;
+            background-color: #C96极致的对齐E3B;
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.3);
         }
@@ -147,14 +147,15 @@
         }
         .price-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* 确保价格靠右 */
             align-items: center;
+            min-width: 120px; /* 增加宽度确保有足够空间 */
         }
         .item-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
-            text-align: right;
+            text-align: right; /* 价格文本右对齐 */
             margin-left: 10px;
             min-width: 60px;
         }
@@ -175,14 +176,15 @@
         .drink-price-container {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: flex-end; /* 确保价格靠右 */
+            min-width: 120px; /* 增加宽度确保有足够空间 */
         }
         .drink-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
             min-width: 80px;
-            text-align: right;
+            text-align: right; /* 价格文本右对齐 */
         }
         .options {
             margin-top: 8px;
@@ -365,7 +367,7 @@
         }
         .cart-item-icon {
             background-color: #8B4513;
-            width极致的对齐: 40px;
+            width: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
@@ -377,15 +379,18 @@
         }
         .cart-item-details {
             flex-grow: 1;
+            text-align: right; /* 购物车价格靠右 */
         }
         .cart-item-name {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
+            text-align: left; /* 名称保持左对齐 */
         }
         .cart-item-price {
             font-size: 0.9em;
             color: #DAA520;
+            text-align: right; /* 价格靠右 */
         }
         .cart-item-controls {
             display: flex;
@@ -421,7 +426,6 @@
             color: #FFD700;
             min-width: 20px;
             text-align: center;
-            font-size: 1.1em;
         }
         .remove-btn {
             background-color: #e74c3c;
@@ -492,7 +496,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 8px rgba(0,0极致的对齐,0,0.3);
         }
         #checkout-btn:hover {
             transform: translateY(-3px);
@@ -500,7 +504,7 @@
             background: linear-gradient(to right, #FFA500, #FF8C00);
         }
         #checkout-btn:active {
-            transform: translateY(1px);
+            transform: translateY(极致的对齐1px);
         }
 
         /* 结算弹窗 */
@@ -761,7 +765,7 @@
             酒水类
         </button>
         <button class="category-btn" onclick="showCategory('snacks')">
-            <i class="fas fa-utensils"></极致的对齐i>
+            <i class="fas fa-utensils"></i>
             小吃类
         </button>
         <button class="category-btn" onclick="showCategory('lemontea')">
@@ -1013,10 +1017,10 @@
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
-                <div class="drink-name">A6 话梅柠檬茶</div>
+                <div class="drink-name">A6 话极致的对齐梅柠檬茶</div>
                 <div class="drink-price-container">
                     <span class="drink-price">￥19</span>
-                    <button class="add-btn" onclick="addToCart('A6', 'A6 话梅柠檬茶', '19', '柠檬茶')">
+                    <button class="add-btn" onclick="addToCart('A6', 'A6 话极致的对齐梅柠檬茶', '19', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1097,7 +1101,7 @@
 
     <!-- 购物车面板（左下角） -->
     <div id="cart-panel">
-        <div class="cart-panel-header">
+        <div class极致的对齐="cart-panel-header">
             <div id="cart-panel-title"><i class="fas fa-shopping-basket"></i> 购物车</div>
             <button id="close-cart-btn"><i class="fas fa-times"></i></button>
         </div>
