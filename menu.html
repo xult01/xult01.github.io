@@ -48,7 +48,7 @@
             margin-bottom: 20px;
             width: 85%;
             border-radius: 5px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 3极致的对齐px 6px rgba(0,0,0,0.3);
         }
         .category-btn {
             display: flex;
@@ -150,7 +150,7 @@
             justify-content: flex-end;
             align-items: center;
         }
-        .price-medium, .price-large {
+        .item-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
@@ -177,7 +177,7 @@
             align-items: center;
             justify-content: flex-end;
         }
-        .drink-price-medium-large {
+        .drink-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
@@ -228,11 +228,11 @@
             pointer-events: none;
         }
 
-        /* 购物车图标容器 */
+        /* 购物车图标容器（左下角） */
         #cart-icon-container {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             z-index: 1000;
             cursor: pointer;
             transition: all 0.3s;
@@ -250,7 +250,7 @@
             transition: all 0.3s;
         }
         #cart-icon-bg:hover {
-            transform: translateY(-5px) rotate(-5deg);
+            transform: translateY(-5px) rotate(5deg);
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
         }
         #cart-icon {
@@ -281,11 +281,11 @@
             100% { transform: scale(1); }
         }
 
-        /* 购物车面板样式 */
+        /* 购物车面板（左下角） */
         #cart-panel {
             position: fixed;
             bottom: 115px;
-            right: 30px;
+            left: 30px;
             width: 320px;
             max-height: 400px;
             background: linear-gradient(to bottom, #3e2723, #1a120b);
@@ -365,7 +365,7 @@
         }
         .cart-item-icon {
             background-color: #8B4513;
-            width: 40px;
+            width极致的对齐: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
@@ -596,7 +596,7 @@
             .item-name, .drink-name {
                 font-size: 1.15em;
             }
-            .price-medium, .price-large, .drink-price-medium-large {
+            .item-price, .drink-price {
                 font-size: 1.05em;
                 min-width: 55px;
             }
@@ -609,9 +609,10 @@
                 gap: 10px;
                 font-size: 0.85em;
             }
+            /* 左下角购物车移动端适配 */
             #cart-icon-container {
                 bottom: 20px;
-                right: 20px;
+                left: 20px;
             }
             #cart-icon-bg {
                 width: 60px;
@@ -627,7 +628,7 @@
             }
             #cart-panel {
                 bottom: 90px;
-                right: 20px;
+                left: 20px;
                 width: calc(100% - 40px);
                 max-width: 300px;
             }
@@ -670,7 +671,7 @@
             .item-name, .drink-name {
                 font-size: 1.1em;
             }
-            .price-medium, .price-large, .drink-price-medium-large {
+            .item-price, .drink-price {
                 font-size: 1.0em;
                 min-width: 50px;
             }
@@ -710,9 +711,10 @@
             #cart-total {
                 font-size: 1.1em;
             }
+            /* 超小屏幕左下角购物车 */
             #cart-icon-container {
                 bottom: 15px;
-                right: 15px;
+                left: 15px;
             }
             #cart-icon-bg {
                 width: 55px;
@@ -728,7 +730,7 @@
             }
             #cart-panel {
                 bottom: 75px;
-                right: 15px;
+                left: 15px;
                 width: calc(100% - 30px);
                 max-width: 270px;
             }
@@ -759,7 +761,7 @@
             酒水类
         </button>
         <button class="category-btn" onclick="showCategory('snacks')">
-            <i class="fas fa-utensils"></i>
+            <i class="fas fa-utensils"></极致的对齐i>
             小吃类
         </button>
         <button class="category-btn" onclick="showCategory('lemontea')">
@@ -776,9 +778,8 @@
         <div class="menu-item">
             <div class="item-name">J1 RIO</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J1', 'J1 RIO', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J1', 'J1 RIO', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -787,9 +788,8 @@
         <div class="menu-item">
             <div class="item-name">J2 啤酒</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J2', 'J2 啤酒', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J2', 'J2 啤酒', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -798,9 +798,8 @@
         <div class="menu-item">
             <div class="item-name">J3 劲酒</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J3', 'J3 劲酒', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J3', 'J3 劲酒', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -809,9 +808,8 @@
         <div class="menu-item">
             <div class="item-name">J5 红酒</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J5', 'J5 红酒', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J5', 'J5 红酒', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -820,9 +818,8 @@
         <div class="menu-item">
             <div class="item-name">J6 葡萄酒</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J6', 'J6 葡萄酒', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J6', 'J6 葡萄酒', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -831,9 +828,8 @@
         <div class="menu-item">
             <div class="item-name">J7 日落</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J7', 'J7 日落', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J7', 'J7 日落', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -842,9 +838,8 @@
         <div class="menu-item">
             <div class="item-name">J8 人生</div>
             <div class="price-container">
-                <span class="price-medium">￥12</span>
-                <span class="price-large">￥18</span>
-                <button class="add-btn" onclick="addToCart('J8', 'J8 人生', '12', '酒水类')">
+                <span class="item-price">￥18</span>
+                <button class="add-btn" onclick="addToCart('J8', 'J8 人生', '18', '酒水类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -860,9 +855,8 @@
         <div class="menu-item">
             <div class="item-name">C1 柠檬鸡爪</div>
             <div class="price-container">
-                <span class="price-medium">￥18</span>
-                <span class="price-large">￥28</span>
-                <button class="add-btn" onclick="addToCart('C1', 'C1 柠檬鸡爪', '18', '小吃类')">
+                <span class="item-price">￥28</span>
+                <button class="add-btn" onclick="addToCart('C1', 'C1 柠檬鸡爪', '28', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -871,9 +865,8 @@
         <div class="menu-item">
             <div class="item-name">C2 虎皮鸡爪</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C2', 'C2 虎皮鸡爪', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C2', 'C2 虎皮鸡爪', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -882,9 +875,8 @@
         <div class="menu-item">
             <div class="item-name">C3 豌豆</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C3', 'C3 豌豆', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C3', 'C3 豌豆', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -893,9 +885,8 @@
         <div class="menu-item">
             <div class="item-name">C5 海草</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C5', 'C5 海草', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C5', 'C5 海草', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -904,9 +895,8 @@
         <div class="menu-item">
             <div class="item-name">C6 酸豆芽</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C6', 'C6 酸豆芽', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C6', 'C6 酸豆芽', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -915,9 +905,8 @@
         <div class="menu-item">
             <div class="item-name">C7 臭豆腐</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C7', 'C7 臭豆腐', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C7', 'C7 臭豆腐', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -926,9 +915,8 @@
         <div class="menu-item">
             <div class="item-name">C8 火山烤肠</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C8', 'C8 火山烤肠', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C8', 'C8 火山烤肠', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -937,9 +925,8 @@
         <div class="menu-item">
             <div class="item-name">C9 人肉叉烧包</div>
             <div class="price-container">
-                <span class="price-medium">￥15</span>
-                <span class="price-large">￥25</span>
-                <button class="add-btn" onclick="addToCart('C9', 'C9 人肉叉烧包', '15', '小吃类')">
+                <span class="item-price">￥25</span>
+                <button class="add-btn" onclick="addToCart('C9', 'C9 人肉叉烧包', '25', '小吃类')">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
@@ -956,8 +943,8 @@
             <div class="drink-row">
                 <div class="drink-name">A1 暴打柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥12/15</span>
-                    <button class="add-btn" onclick="addToCart('A1', 'A1 暴打柠檬茶', '12', '柠檬茶')">
+                    <span class="drink-price">￥15</span>
+                    <button class="add-btn" onclick="addToCart('A1', 'A1 暴打柠檬茶', '15', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -974,8 +961,8 @@
             <div class="drink-row">
                 <div class="drink-name">A2 鸭屎香柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥15/18</span>
-                    <button class="add-btn" onclick="addToCart('A2', 'A2 鸭屎香柠檬茶', '15', '柠檬茶')">
+                    <span class="drink-price">￥18</span>
+                    <button class="add-btn" onclick="addToCart('A2', 'A2 鸭屎香柠檬茶', '18', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -992,8 +979,8 @@
             <div class="drink-row">
                 <div class="drink-name">A3 金桔柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥12/15</span>
-                    <button class="add-btn" onclick="addToCart('A3', 'A3 金桔柠檬茶', '12', '柠檬茶')">
+                    <span class="drink-price">￥15</span>
+                    <button class="add-btn" onclick="addToCart('A3', 'A3 金桔柠檬茶', '15', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1010,8 +997,8 @@
             <div class="drink-row">
                 <div class="drink-name">A5 香橙柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥14/17</span>
-                    <button class="add-btn" onclick="addToCart('A5', 'A5 香橙柠檬茶', '14', '柠檬茶')">
+                    <span class="drink-price">￥17</span>
+                    <button class="add-btn" onclick="addToCart('A5', 'A5 香橙柠檬茶', '17', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1028,8 +1015,8 @@
             <div class="drink-row">
                 <div class="drink-name">A6 话梅柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥16/19</span>
-                    <button class="add-btn" onclick="addToCart('A6', 'A6 话梅柠檬茶', '16', '柠檬茶')">
+                    <span class="drink-price">￥19</span>
+                    <button class="add-btn" onclick="addToCart('A6', 'A6 话梅柠檬茶', '19', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1046,8 +1033,8 @@
             <div class="drink-row">
                 <div class="drink-name">A7 红宝石柠檬茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥18/22</span>
-                    <button class="add-btn" onclick="addToCart('A7', 'A7 红宝石柠檬茶', '18', '柠檬茶')">
+                    <span class="drink-price">￥22</span>
+                    <button class="add-btn" onclick="addToCart('A7', 'A7 红宝石柠檬茶', '22', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1064,8 +1051,8 @@
             <div class="drink-row">
                 <div class="drink-name">A8 伯牙绝弦</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥20/25</span>
-                    <button class="add-btn" onclick="addToCart('A8', 'A8 伯牙绝弦', '20', '柠檬茶')">
+                    <span class="drink-price">￥25</span>
+                    <button class="add-btn" onclick="addToCart('A8', 'A8 伯牙绝弦', '25', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1082,8 +1069,8 @@
             <div class="drink-row">
                 <div class="drink-name">A9 红糖珍珠奶茶</div>
                 <div class="drink-price-container">
-                    <span class="drink-price-medium-large">￥16/20</span>
-                    <button class="add-btn" onclick="addToCart('A9', 'A9 红糖珍珠奶茶', '16', '柠檬茶')">
+                    <span class="drink-price">￥20</span>
+                    <button class="add-btn" onclick="addToCart('A9', 'A9 红糖珍珠奶茶', '20', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1100,7 +1087,7 @@
         </div>
     </div>
 
-    <!-- 购物车图标 -->
+    <!-- 购物车图标（左下角） -->
     <div id="cart-icon-container">
         <div id="cart-icon-bg">
             <i id="cart-icon" class="fas fa-shopping-cart"></i>
@@ -1108,7 +1095,7 @@
         </div>
     </div>
 
-    <!-- 购物车面板 -->
+    <!-- 购物车面板（左下角） -->
     <div id="cart-panel">
         <div class="cart-panel-header">
             <div id="cart-panel-title"><i class="fas fa-shopping-basket"></i> 购物车</div>
@@ -1166,8 +1153,12 @@
             }
         }
 
-        // 添加商品到购物车
+        // 添加商品到购物车（使用大杯/大份价格）
         function addToCart(itemId, name, price, category) {
+            // 调试用：在控制台输出添加的商品信息
+            console.log(`添加商品: ${name}, 价格: ${price}, ID: ${itemId}, 类别: ${category}`);
+
+            // 创建唯一ID：类别 + 商品ID
             const id = `${category}_${itemId}`;
 
             if (cart[id]) {
@@ -1187,8 +1178,8 @@
             // 显示添加到购物车动画
             showAddToCartAnimation();
 
+            // 更新购物车显示
             updateCartDisplay();
-            toggleCartPanel(true);
         }
 
         // 显示添加到购物车动画
@@ -1203,6 +1194,10 @@
             setTimeout(() => {
                 cartIcon.style.transform = 'scale(1)';
                 cartIcon.style.color = originalColor;
+
+                // 显示添加成功提示（可选）
+                const itemCount = Object.keys(cart).reduce((total, id) => total + cart[id].quantity, 0);
+                console.log(`已成功添加商品，当前购物车数量: ${itemCount}`);
             }, 500);
         }
 
