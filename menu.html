@@ -5,48 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>酒吧菜单</title>
     <style>
+        /* 基础样式 */
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
         body {
             font-family: Arial, sans-serif;
             display: flex;
             min-height: 100vh;
-            background-color: #555;
+            font-size: 14px;
             color: #FFD700;
             line-height: 1.2;
-            position: relative;
+            background-color: #555;
         }
-
-        /* 左侧导航栏样式 */
         #sidebar {
             width: 100px;
-            background-color: #e67e22;
+            background-color: #8B4513;
             position: sticky;
             top: 0;
             height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
             z-index: 10;
-            padding-top: 10px;
         }
-
         #sidebar h1 {
             text-align: center;
-            padding: 12px 5px;
-            font-size: 1.4em;
+            padding: 12px 2px;
+            font-size: 1.5em;
             color: #FFD700;
-            background-color: #d35400;
+            background-color: #A0522D;
             margin-bottom: 8px;
         }
-
         .category-btn {
             display: block;
             width: 100%;
-            padding: 12px 5px;
+            padding: 10px 2px;
             background: none;
             border: none;
             color: #FFD700;
@@ -60,14 +55,12 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-
         .category-btn:hover, .category-btn.active {
-            background-color: #d35400;
+            background-color: #A0522极致的对齐D;
             font-weight: bold;
             font-size: 1.25em;
             color: #FFD700;
         }
-
         .category-btn.active::after {
             content: "";
             position: absolute;
@@ -77,468 +70,197 @@
             width: 4px;
             background-color: #FFD700;
         }
-
-        /* 主内容区样式 */
         #content {
             flex: 1;
-            padding: 15px;
+            padding: 10px 15px;
             height: 100vh;
             overflow-y: auto;
             background-color: #444;
         }
-
         .menu-section {
             display: none;
             padding: 15px;
             border-radius: 5px;
         }
-
         .menu-section.active {
             display: block;
             animation: fadeIn 0.3s;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         .menu-section h2 {
             color: #FFD700;
             padding-bottom: 8px;
             margin: 0 0 15px;
-            font-size: 1.6em;
+            font-size: 1.3em;
             border-bottom: 2px solid #666;
         }
-
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
         li {
-            padding: 12px 0;
-            border-bottom: 1px solid #666;
+            padding: 8px 0;
+            border-bottom: 1px solid #555;
         }
-
-        /* 常规商品样式 */
+        .menu-header {
+            display: flex;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #FFD700;
+            padding-bottom: 8px;
+            justify-content: flex-end;
+            font-size: 1.1em;
+        }
+        .menu-header > div {
+            width: 70px;
+            text-align: right;
+            padding-right: 0;
+        }
         .menu-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
-
         .item-name {
             flex: 1;
             color: #FFD700;
             font-weight: bold;
-            font-size: 1.3em;
             padding: 5px 0;
         }
-
         .price-container {
             display: flex;
-            width: 180px;
+            width: 120px;
         }
-
         .price-medium, .price-large {
-            width: 90px;
+            width: 60px;
             color: #FFD700;
-            text-align: center;
+            text-align: right;
             font-weight: bold;
-            padding: 0 5px;
+            padding-right: 0;
+            white-space: nowrap;
         }
-
-        .add-to-cart {
-            background-color: #e67e22;
-            color: #fff;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 5px;
-            font-size: 1em;
-            transition: all 0.2s;
-        }
-
-        .add-to-cart:hover {
-            background-color: #d35400;
-        }
-
-        /* 饮品样式 */
         .drink-info {
             display: flex;
             flex-direction: column;
         }
-
         .drink-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
         }
-
         .drink-name {
             font-weight: bold;
             color: #FFD700;
             flex: 1;
-            font-size: 1.3em;
         }
-
         .drink-price-container {
             display: flex;
-            width: 180px;
+            width: 120px;
         }
-
         .drink-price-medium, .drink-price-large {
-            width: 90px;
+            width: 60px;
             color: #FFD700;
-            text-align: center;
+            text-align: right;
             font-weight: bold;
-            padding: 0 5px;
+            padding-right: 0;
+            white-space: nowrap;
         }
-
         .options {
-            margin-top: 8px;
-            font-size: 0.9em;
-            color: #ccc !important;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: #FFD700 !important;
             display: flex;
             justify-content: space-between;
             padding-left: 5px;
         }
-
         .option-item {
             padding: 0;
             border-radius: 0;
+            color: #FFD700 !important;
         }
 
-        /* 购物车按钮 */
-        .cart-button {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #e67e22;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-            transition: all 0.3s;
-        }
-
-        .cart-button:hover {
-            transform: scale(1.1);
-            background-color: #d35400;
-        }
-
-        .cart-icon {
-            font-size: 30px;
-            color: #FFD700;
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #ff0000;
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        /* 购物车弹窗 */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 200;
-            display: none;
-        }
-
-        .cart-content {
-            background-color: #444;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            border-radius: 10px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-header {
-            background-color: #e67e22;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-title {
-            color: #FFD700;
-            font-size: 1.6em;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            color: #FFD700;
-            font-size: 1.8em;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            max-height: calc(80vh - 150px);
-            padding: 15px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #666;
-        }
-
-        .cart-item-name {
-            flex: 1;
-            color: #FFD700;
-            font-size: 1.2em;
-        }
-
-        .cart-item-price {
-            color: #FFD700;
-            width: 100px;
-            text-align: right;
-            font-size: 1.2em;
-        }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-        }
-
-        .cart-item-quantity {
-            margin: 0 10px;
-            color: #FFD700;
-            min-width: 20px;
-            text-align: center;
-            font-size: 1.2em;
-        }
-
-        .cart-item-btn {
-            background-color: #e67e22;
-            border: none;
-            color: #FFD700;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.3em;
-        }
-
-        .cart-item-btn:hover {
-            background-color: #d35400;
-        }
-
-        .cart-footer {
-            background-color: #333;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cart-total {
-            color: #FFD700;
-            font-size: 1.4em;
-        }
-
-        .confirm-btn {
-            background-color: #e67e22;
-            color: #FFD700;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.2em;
-            transition: all 0.3s;
-        }
-
-        .confirm-btn:hover {
-            background-color: #d35400;
-        }
-
-        .empty-cart-message {
-            text-align: center;
-            padding: 40px;
-            color: #FFD700;
-            font-size: 1.4em;
-        }
-
-        /* 响应式设计 */
+        /* 移动端适配 */
         @media (max-width: 768px) {
             body {
-                font-size: 13px;
+                font-size: 12px;
                 min-width: 320px;
             }
-
             #sidebar {
-                width: 85px;
+                width: 90px;
             }
-
             #sidebar h1 {
-                padding: 10px 3px;
-                font-size: 1.3em;
+                padding: 10px 2px;
+                font-size: 1.4em;
             }
-
             .category-btn {
-                padding: 10px 3px;
+                padding: 8px 2px;
                 font-size: 1.0em;
             }
-
             .category-btn.active {
-                font-size: 1.1em;
+                font-size: 1.15em;
             }
-
             #content {
-                padding: 10px;
+                padding: 8px;
             }
-
-            .price-container, .drink-price-container {
-                width: 150px;
-            }
-
-            .price-medium, .price-large,
-            .drink-price-medium, .drink-price-large {
-                width: 75px;
-            }
-
-            .add-to-cart {
-                padding: 5px 10px;
+            .menu-header > div {
+                width: 50px;
                 font-size: 0.9em;
             }
-
-            .cart-button {
-                width: 55px;
-                height: 55px;
-                right: 15px;
-                bottom: 15px;
+            .price-container, .drink-price-container {
+                width: 100px;
             }
-
-            .cart-icon {
-                font-size: 26px;
-            }
-
-            .cart-badge {
-                width: 22px;
-                height: 22px;
-                font-size: 11px;
+            .price-medium, .price-large,
+            .drink-price-medium, .drink-price-large {
+                width: 50px;
             }
         }
 
+        /* 超小屏幕优化 */
         @media (max-width: 480px) {
             body {
-                font-size: 12px;
-                flex-direction: column;
+                font-size: 11px;
             }
-
             #sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                width: 80px;
+            }
+            #sidebar h1 {
+                padding: 8px 1px;
+                font-size: 1.2em;
+            }
+            .category-btn {
+                padding: 7px 1px;
+                font-size: 0.9em;
+            }
+            .category-btn.active {
+                font-size: 1.05em;
+            }
+            #content {
                 padding: 5px;
             }
-
-            #sidebar h1 {
+            .menu-header > div {
+                width: 40px;
+                font-size: 0.8em;
+            }
+            .price-container, .drink-price-container {
+                width: 80px;
+            }
+            .price-medium, .price-large,
+            .drink-price-medium, .drink-price-large {
+                width: 40px;
+            }
+            .options {
+                flex-direction: column;
+            }
+            .option-item {
                 width: 100%;
                 margin-bottom: 5px;
             }
-
-            .category-btn {
-                margin: 5px;
-                padding: 8px;
-                width: auto;
-                border-radius: 4px;
-            }
-
-            #content {
-                padding: 10px;
-                margin-left: 0;
-            }
-
-            .price-container, .drink-price-container {
-                width: 130px;
-            }
-
-            .price-medium, .price-large,
-            .drink-price-medium, .drink-price-large {
-                width: 65px;
-            }
-
-            .item-name, .drink-name {
-                font-size: 1.2em;
-            }
-
-            .cart-button {
-                width: 50px;
-                height: 50px;
-                right: 10px;
-                bottom: 10px;
-            }
-
-            .cart-icon {
-                font-size: 22px;
-            }
-
-            .cart-badge {
-                width: 20px;
-                height: 20px;
-                font-size: 10px;
-            }
-        }
-
-        /* 动画效果 */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .pulse {
-            animation: pulse 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <!-- 左侧导航栏 -->
     <div id="sidebar">
         <h1>菜单分类</h1>
         <button class="category-btn active" onclick="showCategory('drinks')">酒水类</button>
@@ -546,137 +268,149 @@
         <button class="category-btn" onclick="showCategory('lemontea')">柠檬茶</button>
     </div>
 
-    <!-- 主内容区 -->
     <div id="content">
-        <!-- 酒水类 -->
         <div id="drinks" class="menu-section active">
             <h2>酒水类</h2>
+            <div class="menu-header">
+                <div class="price-medium">中杯</div>
+                <div class="price-large">大杯</div>
+            </div>
             <ul>
                 <li>
         <div class="menu-item">
             <div class="item-name">J1 RIO</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J1 RIO(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J1 RIO(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">J2 啤酒</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J2 啤酒(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J2 啤酒(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">J3 劲酒</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J3 劲酒(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J3 劲酒(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">J5 红酒</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J5 红酒(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J5 红酒(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
-            <div class="item-name">J6 白葡萄酒</div>
+            <div class="item-name">J6 葡萄酒</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J6 白葡萄酒(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J6 白葡萄酒(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">J7 日落</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J7 日落(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J7 日落(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">J8 人生</div>
             <div class="price-container">
-                <div class="price-medium">￥12<button class="add-to-cart" data-name="J8 人生(中杯)" data-price="12">+</button></div>
-                <div class="price-large">￥18<button class="add-to-cart" data-name="J8 人生(大杯)" data-price="18">+</button></div>
+                <div class="price-medium">￥12</div>
+                <div class="price-large">￥18</div>
             </div>
         </div>
     </li>
             </ul>
         </div>
 
-        <!-- 小吃类 -->
         <div id="snacks" class="menu-section">
-            <h2>小吃类</h2>
+            <h2>小吃类</h2>  <!-- 修复这里的标题标签 -->
+            <div class="menu-header">
+                <div class="price-medium">小份</div>
+                <div class="price-large">大份</div>
+            </div>
             <ul>
                 <li>
         <div class="menu-item">
+            <div class="item-name">C1 柠檬鸡爪</div>
+            <div class="price-container">
+                <div class="price-medium">￥18</div>
+                <div class="price-large">￥28</div>
+            </div>
+        </div>
+    </li><li>
+        <div class="menu-item">
             <div class="item-name">C2 虎皮鸡爪</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C2 虎皮鸡爪(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C2 虎皮鸡爪(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C3 豌豆</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C3 豌豆(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C3 豌豆(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C5 海草</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C5 海草(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C5 海草(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C6 酸豆芽</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C6 酸豆芽(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C6 酸豆芽(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C7 臭豆腐</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C7 臭豆腐(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C7 臭豆腐(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C8 火山烤肠</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C8 火山烤肠(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C8 火山烤肠(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li><li>
         <div class="menu-item">
             <div class="item-name">C9 人肉叉烧包</div>
             <div class="price-container">
-                <div class="price-medium">￥15<button class="add-to-cart" data-name="C9 人肉叉烧包(中杯)" data-price="15">+</button></div>
-                <div class="price-large">￥25<button class="add-to-cart" data-name="C9 人肉叉烧包(大杯)" data-price="25">+</button></div>
+                <div class="price-medium">￥15</div>
+                <div class="price-large">￥25</div>
             </div>
         </div>
     </li>
             </ul>
         </div>
 
-        <!-- 柠檬茶 -->
         <div id="lemontea" class="menu-section">
             <h2>柠檬茶</h2>
             <ul>
@@ -685,153 +419,140 @@
             <div class="drink-row">
                 <div class="drink-name">A1 暴打柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12<button class="add-to-cart" data-name="A1 暴打柠檬茶(中杯)" data-price="12">+</button></div>
-                    <div class="drink-price-large">￥15<button class="add-to-cart" data-name="A1 暴打柠檬茶(大杯)" data-price="15">+</button></div>
+                    <div class="drink-price-medium">￥12</div>
+                    <div class="drink-price-large">￥15</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A2 鸭屎香柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥15<button class="add-to-cart" data-name="A2 鸭屎香柠檬茶(中杯)" data-price="15">+</button></div>
-                    <div class="drink-price-large">￥18<button class="add-to-cart" data-name="A2 鸭屎香柠檬茶(大杯)" data-price="18">+</button></div>
+                    <div class="drink-price-medium">￥15</div>
+                    <div class="drink-price-large">￥18</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A3 金桔柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥12<button class="add-to-cart" data-name="A3 金桔柠檬茶(中杯)" data-price="12">+</button></div>
-                    <div class="drink-price-large">￥15<button class="add-to-cart" data-name="A3 金桔柠檬茶(大杯)" data-price="15">+</button></div>
+                    <div class="drink-price-medium">￥12</div>
+                    <div class="drink-price-large">￥15</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A5 香橙柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥14<button class="add-to-cart" data-name="A5 香橙柠檬茶(中杯)" data-price="14">+</button></div>
-                    <div class="drink-price-large">￥17<button class="add-to-cart" data-name="A5 香橙柠檬茶(大杯)" data-price="17">+</button></div>
+                    <div class="drink-price-medium">￥14</div>
+                    <div class="drink-price-large">￥17</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A6 话梅柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥16<button class="add-to-cart" data-name="A6 话梅柠檬茶(中杯)" data-price="16">+</button></div>
-                    <div class="drink-price-large">￥19<button class="add-to-cart" data-name="A6 话梅柠檬茶(大杯)" data-price="19">+</button></div>
+                    <div class="drink-price-medium">￥16</div>
+                    <div class="drink-price-large">￥19</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A7 红宝石柠檬茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥18<button class="add-to-cart" data-name="A7 红宝石柠檬茶(中杯)" data-price="18">+</button></div>
-                    <div class="drink-price-large">￥22<button class="add-to-cart" data-name="A7 红宝石柠檬茶(大杯)" data-price="22">+</button></div>
+                    <div class="drink-price-medium">￥18</div>
+                    <div class="drink-price-large">￥22</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A8 伯牙绝弦</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥20<button class="add-to-cart" data-name="A8 伯牙绝弦(中杯)" data-price="20">+</button></div>
-                    <div class="drink-price-large">￥25<button class="add-to-cart" data-name="A8 伯牙绝弦(大杯)" data-price="25">+</button></div>
+                    <div class="drink-price-medium">￥20</div>
+                    <div class="drink-price-large">￥25</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
                 <div class="drink-name">A9 红糖珍珠奶茶</div>
                 <div class="drink-price-container">
-                    <div class="drink-price-medium">￥16<button class="add-to-cart" data-name="A9 红糖珍珠奶茶(中杯)" data-price="16">+</button></div>
-                    <div class="drink-price-large">￥20<button class="add-to-cart" data-name="A9 红糖珍珠奶茶(大杯)" data-price="20">+</button></div>
+                    <div class="drink-price-medium">￥16</div>
+                    <div class="drink-price-large">￥20</div>
                 </div>
             </div>
-            <div class="options">
-                <span class="option-item">冰量: 正常冰/少冰/去冰</span>
-                <span class="option-item">甜度: 正常糖/少糖/无糖</span>
-            </div>
+            
+        <div class="options">
+            <span class="option-item">冰量: 正常冰/少冰/去冰</span>
+            <span class="option-item">甜度: 正常糖/少糖/无糖</span>
+        </div>
+    
         </div>
     </li>
             </ul>
         </div>
     </div>
 
-    <!-- 购物车按钮 -->
-    <div class="cart-button" onclick="openCart()">
-        <div class="cart-icon">🛒</div>
-        <div class="cart-badge" id="cart-count">0</div>
-    </div>
-
-    <!-- 购物车弹窗 -->
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2 class="cart-title">购物车</h2>
-                <button class="close-cart" onclick="closeCart()">×</button>
-            </div>
-            <div class="cart-items" id="cart-items">
-                <!-- 购物车商品将在这里动态生成 -->
-            </div>
-            <div class="cart-footer">
-                <div class="cart-total">总计: ￥<span id="cart-total">0.00</span></div>
-                <button class="confirm-btn" onclick="placeOrder()">确认下单</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // 购物车数据
-        let cart = [];
-
-        // 显示分类
         function showCategory(categoryId) {
-            // 隐藏所有部分
+            // 切换内容显示
             document.querySelectorAll('.menu-section').forEach(section => {
                 section.classList.remove('active');
             });
-
-            // 显示选中的分类
             document.getElementById(categoryId).classList.add('active');
 
             // 更新按钮状态
@@ -839,123 +560,12 @@
                 btn.classList.remove('active');
             });
             event.currentTarget.classList.add('active');
-        }
 
-        // 添加到购物车
-        function addToCart(name, price) {
-            // 检查商品是否已在购物车中
-            const existingItem = cart.find(item => item.name === name && item.price === parseFloat(price));
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: parseFloat(price),
-                    quantity: 1
-                });
-            }
-
-            updateCartUI();
-
-            // 添加动画效果
-            const cartButton = document.querySelector('.cart-button');
-            cartButton.classList.remove('pulse');
-            void cartButton.offsetWidth; // 触发重绘
-            cartButton.classList.add('pulse');
-        }
-
-        // 从购物车移除
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        // 更新数量
-        function updateQuantity(index, change) {
-            cart[index].quantity += change;
-
-            if (cart[index].quantity <= 0) {
-                removeFromCart(index);
-            } else {
-                updateCartUI();
+            // 移动端滚动到顶部
+            if (window.innerWidth <= 768) {
+                document.getElementById('content').scrollTo(0, 0);
             }
         }
-
-        // 更新购物车UI
-        function updateCartUI() {
-            // 更新购物车商品数量
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cart-count').textContent = totalItems;
-
-            // 更新购物车商品列表
-            const cartItems = document.getElementById('cart-items');
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart-message">购物车是空的</div>';
-            } else {
-                cartItems.innerHTML = '';
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">￥${item.price.toFixed(2)} × ${item.quantity}</div>
-                        <div class="cart-item-controls">
-                            <button class="cart-item-btn" onclick="updateQuantity(${index}, -1)">-</button>
-                            <span class="cart-item-quantity">${item.quantity}</span>
-                            <button class="cart-item-btn" onclick="updateQuantity(${index}, 1)">+</button>
-                            <button class="cart-item-btn" onclick="removeFromCart(${index})">×</button>
-                        </div>
-                    `;
-                    cartItems.appendChild(cartItem);
-                });
-            }
-
-            // 更新总价
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('cart-total').textContent = total.toFixed(2);
-        }
-
-        // 打开购物车
-        function openCart() {
-            document.getElementById('cart-modal').style.display = 'flex';
-        }
-
-        // 关闭购物车
-        function closeCart() {
-            document.getElementById('cart-modal').style.display = 'none';
-        }
-
-        // 下单
-        function placeOrder() {
-            if (cart.length === 0) {
-                alert('购物车是空的!');
-                return;
-            }
-
-            const total = parseFloat(document.getElementById('cart-total').textContent);
-            alert(`下单成功！总计：￥${total.toFixed(2)}`);
-
-            // 清空购物车
-            cart = [];
-            updateCartUI();
-            closeCart();
-        }
-
-        // 初始化页面
-        document.addEventListener('DOMContentLoaded', function() {
-            // 初始化购物车
-            updateCartUI();
-
-            // 添加商品事件监听
-            document.addEventListener('click', function(event) {
-                if (event.target.classList.contains('add-to-cart')) {
-                    const name = event.target.getAttribute('data-name');
-                    const price = event.target.getAttribute('data-price');
-                    addToCart(name, price);
-                }
-            });
-        });
     </script>
 </body>
 </html>
