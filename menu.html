@@ -27,9 +27,9 @@
         #sidebar {
             width: 100px;
             background-color: #8B4513;
-            background-image: linear-gradient(to bottom, #8B4513, #5c2d0b);
+            background-image: linear-gradient(to bottom, #8极致的对齐B4513, #5c2d0b);
             position: sticky;
-            top: 0;
+            top极致的对齐: 0;
             height: 100vh;
             overflow-y: auto;
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
@@ -72,7 +72,7 @@
             margin-bottom: 8px;
         }
         .category-btn:hover, .category-btn.active {
-            background-color: #C96极致的对齐E3B;
+            background-color: #C96E3B;
             transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.3);
         }
@@ -147,15 +147,15 @@
         }
         .price-container {
             display: flex;
-            justify-content: flex-end; /* 确保价格靠右 */
+            justify-content: flex-end;
             align-items: center;
-            min-width: 120px; /* 增加宽度确保有足够空间 */
+            min-width: 120px;
         }
         .item-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
-            text-align: right; /* 价格文本右对齐 */
+            text-align: right;
             margin-left: 10px;
             min-width: 60px;
         }
@@ -176,15 +176,15 @@
         .drink-price-container {
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* 确保价格靠右 */
-            min-width: 120px; /* 增加宽度确保有足够空间 */
+            justify-content: flex-end;
+            min-width: 120px;
         }
         .drink-price {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
             min-width: 80px;
-            text-align: right; /* 价格文本右对齐 */
+            text-align: right;
         }
         .options {
             margin-top: 8px;
@@ -320,7 +320,7 @@
             font-size: 1.5em;
             font-weight: bold;
             color: #FFD700;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.极致的对齐5);
         }
         #close-cart-btn {
             background: none;
@@ -331,7 +331,7 @@
             padding: 5px;
             border-radius: 50%;
             width: 35px;
-            height: 35px;
+            height: 35极致的对齐px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -379,18 +379,18 @@
         }
         .cart-item-details {
             flex-grow: 1;
-            text-align: right; /* 购物车价格靠右 */
+            text-align: right;
         }
         .cart-item-name {
             color: #FFD700;
             font-weight: bold;
             font-size: 1.1em;
-            text-align: left; /* 名称保持左对齐 */
+            text-align: left;
         }
         .cart-item-price {
             font-size: 0.9em;
             color: #DAA520;
-            text-align: right; /* 价格靠右 */
+            text-align: right;
         }
         .cart-item-controls {
             display: flex;
@@ -426,6 +426,7 @@
             color: #FFD700;
             min-width: 20px;
             text-align: center;
+            font-size: 1.1em;
         }
         .remove-btn {
             background-color: #e74c3c;
@@ -496,7 +497,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 3px 8px rgba(0,0极致的对齐,0,0.3);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
         }
         #checkout-btn:hover {
             transform: translateY(-3px);
@@ -504,7 +505,7 @@
             background: linear-gradient(to right, #FFA500, #FF8C00);
         }
         #checkout-btn:active {
-            transform: translateY(极致的对齐1px);
+            transform: translateY(1px);
         }
 
         /* 结算弹窗 */
@@ -579,6 +580,67 @@
             transform: translateY(1px);
         }
 
+        /* 清空购物车确认框 */
+        #clear-confirm {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .confirm-content {
+            background: linear-gradient(to bottom right, #3e2723, #1a120b);
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border: 2px solid #FFD700;
+        }
+        .confirm-content p {
+            font-size: 1.3em;
+            color: #FFD700;
+            margin-bottom: 25px;
+        }
+        .confirm-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .confirm-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        #confirm-clear-btn {
+            background: linear-gradient(to right, #d9534f, #c9302c);
+            color: white;
+        }
+        #confirm-clear-btn:hover {
+            background: linear-gradient(to right, #c9302c, #ac2925);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+        #cancel-clear-btn {
+            background: linear-gradient(to right, #5bc0de, #46b8da);
+            color: white;
+        }
+        #cancel-clear-btn:hover {
+            background: linear-gradient(to right, #46b8da, #31b0d5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+
         /* 移动端适配 */
         @media (max-width: 768px) {
             body {
@@ -635,6 +697,9 @@
                 left: 20px;
                 width: calc(100% - 40px);
                 max-width: 300px;
+            }
+            .confirm-content {
+                padding: 20px;
             }
         }
 
@@ -715,7 +780,7 @@
             #cart-total {
                 font-size: 1.1em;
             }
-            /* 超小屏幕左下角购物车 */
+            /* 超小屏幕左下极致的对齐角购物车 */
             #cart-icon-container {
                 bottom: 15px;
                 left: 15px;
@@ -753,6 +818,14 @@
             #confirm-checkout {
                 padding: 12px 30px;
                 font-size: 1.1em;
+            }
+            .confirm-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .confirm-btn {
+                padding: 10px 20px;
+                width: 100%;
             }
         }
     </style>
@@ -1017,10 +1090,10 @@
     </li><li>
         <div class="drink-info">
             <div class="drink-row">
-                <div class="drink-name">A6 话极致的对齐梅柠檬茶</div>
+                <div class="drink-name">A6 话梅柠檬茶</div>
                 <div class="drink-price-container">
                     <span class="drink-price">￥19</span>
-                    <button class="add-btn" onclick="addToCart('A6', 'A6 话极致的对齐梅柠檬茶', '19', '柠檬茶')">
+                    <button class="add-btn" onclick="addToCart('A6', 'A6 话梅柠檬茶', '19', '柠檬茶')">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
@@ -1101,7 +1174,7 @@
 
     <!-- 购物车面板（左下角） -->
     <div id="cart-panel">
-        <div class极致的对齐="cart-panel-header">
+        <div class="cart-panel-header">
             <div id="cart-panel-title"><i class="fas fa-shopping-basket"></i> 购物车</div>
             <button id="close-cart-btn"><i class="fas fa-times"></i></button>
         </div>
@@ -1117,7 +1190,7 @@
             </div>
             <div id="cart-buttons">
                 <button id="clear-cart-btn"><i class="fas fa-trash-alt"></i> 清空</button>
-                <button id="checkout-btn"><i class="fas fa-cash-register"></i> 结算</button>
+                <button id="checkout-btn"><i class="fas fa-cash-register"></i> 结算</极致的对齐button>
             </div>
         </div>
     </div>
@@ -1129,6 +1202,17 @@
             <h2>结算成功</h2>
             <p id="checkout-amount">总金额: ￥0.00</p>
             <button id="confirm-checkout"><i class="fas fa-check"></i> 确定</button>
+        </div>
+    </div>
+
+    <!-- 清空购物车确认框 -->
+    <div id="clear-confirm" class="modal">
+        <div class="confirm-content">
+            <p>确定要清空购物车吗?</p>
+            <div class="confirm-buttons">
+                <button id="confirm-clear-btn" class="confirm-btn">确定</button>
+                <button id="cancel-clear-btn" class="confirm-btn">取消</button>
+            </div>
         </div>
     </div>
 
@@ -1225,11 +1309,8 @@
                 return;
             }
 
-            if (confirm('确定要清空购物车吗?')) {
-                cart = {};
-                updateCartDisplay();
-                toggleCartPanel(false);
-            }
+            // 显示清空购物车确认框
+            document.getElementById('clear-confirm').style.display = 'flex';
         }
 
         // 切换购物车面板显示
@@ -1365,6 +1446,23 @@
 
                 // 显示成功消息
                 alert('结算成功！您的订单已提交');
+            });
+
+            // 清空购物车确认按钮 - 确定
+            document.getElementById('confirm-clear-btn').addEventListener('click', function() {
+                // 清空购物车
+                cart = {};
+                updateCartDisplay();
+                toggleCartPanel(false);
+
+                // 隐藏清空确认框
+                document.getElementById('clear-confirm').style.display = 'none';
+            });
+
+            // 清空购物车确认按钮 - 取消
+            document.getElementById('cancel-clear-btn').addEventListener('click', function() {
+                // 隐藏清空确认框
+                document.getElementById('clear-confirm').style.display = 'none';
             });
         }
 
